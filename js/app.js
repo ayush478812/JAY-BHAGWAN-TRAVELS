@@ -4,7 +4,7 @@
    ========================================================================== */
 
 // WhatsApp Contact Number
-const WHATSAPP_PHONE = '919825012345';
+const WHATSAPP_PHONE = '918446802069';
 
 document.addEventListener('DOMContentLoaded', () => {
   initDatePickers();
