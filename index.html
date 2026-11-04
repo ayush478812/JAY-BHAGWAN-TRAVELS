@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=12.0">
+  <link rel="stylesheet" href="css/style.css?v=13.0">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -53,6 +53,9 @@
   </script>
 </head>
 <body>
+
+  <!-- Top Viewport Scroll Reading Progress Bar -->
+  <div class="scroll-progress-bar" id="pageScrollProgress"></div>
 
   <!-- ==========================================================================
        Top Contact & Helpline Announcement Bar
@@ -174,7 +177,7 @@
         </div>
         <h1 class="hero-headline">
           Discover India In <br>
-          <span class="gradient-text-gold">Royal Comfort & Luxury</span>
+          <span class="gradient-text-gold animated-gold-gradient">Royal Comfort & Luxury</span>
         </h1>
         <p class="hero-desc-airy">
           Travel across 19 States & 114 iconic temples, royal palaces, and scenic hill stations. Hire luxury Force Urbania, Tempo Travellers, and 32–40 Seater Coaches with verified 5-star chauffeurs.
@@ -300,6 +303,30 @@
             <div class="trust-title">Instant WhatsApp Booking</div>
             <div class="trust-sub">Direct Quote & Confirmed Coach</div>
           </div>
+        </div>
+      </div>
+
+      <!-- Live Luxury Metrics & Trust Counter Strip -->
+      <div class="luxury-stats-counter-strip reveal-on-scroll" id="statsCounterSection">
+        <div class="stat-counter-card">
+          <div class="stat-counter-number"><span class="counter-val" data-target="19">0</span><span class="stat-counter-plus">+</span></div>
+          <div class="stat-counter-label">Indian States Covered</div>
+          <div class="stat-counter-desc">Pan-India permit network</div>
+        </div>
+        <div class="stat-counter-card">
+          <div class="stat-counter-number"><span class="counter-val" data-target="114">0</span><span class="stat-counter-plus">+</span></div>
+          <div class="stat-counter-label">Iconic Landmarks</div>
+          <div class="stat-counter-desc">Jyotirlingas, forts & hills</div>
+        </div>
+        <div class="stat-counter-card">
+          <div class="stat-counter-number"><span class="counter-val" data-target="50000">0</span><span class="stat-counter-plus">+</span></div>
+          <div class="stat-counter-label">Delighted Pilgrims</div>
+          <div class="stat-counter-desc">5-star rated family journeys</div>
+        </div>
+        <div class="stat-counter-card">
+          <div class="stat-counter-number"><span class="counter-val" data-target="100">0</span><span class="stat-counter-plus">%</span></div>
+          <div class="stat-counter-label">Punctuality Record</div>
+          <div class="stat-counter-desc">Zero delay commitment</div>
         </div>
       </div>
 
@@ -442,7 +469,7 @@
        ========================================================================== -->
   <section class="destinations-section" id="destinationsSection">
     <div class="container">
-      <div class="text-center section-header-destinations">
+      <div class="text-center section-header-destinations reveal-on-scroll">
         <div class="section-tag gold-tag"><i class="fa-solid fa-map-location-dot"></i> 19 Indian States & 114 Iconic Landmarks</div>
         <h2 class="section-title">Explore States & <span class="gradient-text-gold">Famous Places</span></h2>
         <p class="section-subtitle mx-auto">
@@ -3081,7 +3108,7 @@
     <div class="container">
       
       <!-- Section Header with Instagram Luxury Badge -->
-      <div class="text-center reels-header-block">
+      <div class="text-center reels-header-block reveal-on-scroll">
         <div class="insta-badge-pill">
           <span class="insta-gradient-icon"><i class="fa-brands fa-instagram"></i></span>
           <span>Trending On Instagram & Reels</span>
@@ -3536,7 +3563,7 @@
        ========================================================================== -->
   <section class="why-choose-section" id="whyChooseSection">
     <div class="container">
-      <div class="text-center">
+      <div class="text-center reveal-on-scroll">
         <div class="section-tag"><i class="fa-solid fa-shield-halved"></i> The Jay Bhagwan Advantage</div>
         <h2 class="section-title">Why Travel With <span class="gradient-text-brand">Jay Bhagwan Travels</span></h2>
         <p class="section-subtitle mx-auto">
@@ -3544,7 +3571,7 @@
         </p>
       </div>
 
-      <div class="benefits-grid">
+      <div class="benefits-grid reveal-on-scroll">
         <div class="benefit-card">
           <div class="benefit-icon-wrap"><i class="fa-solid fa-pump-medical"></i></div>
           <h4 class="benefit-title">Hospital-Grade Hygiene</h4>
@@ -3584,7 +3611,7 @@
        ========================================================================== -->
   <section class="amenities-section" id="amenitiesSection">
     <div class="container">
-      <div class="text-center">
+      <div class="text-center reveal-on-scroll">
         <div class="section-tag"><i class="fa-solid fa-sparkles"></i> First-Class Comfort Standard</div>
         <h2 class="section-title">Our <span class="gradient-text-cyan">Premium Amenities</span></h2>
         <p class="section-subtitle mx-auto">
@@ -3592,7 +3619,7 @@
         </p>
       </div>
 
-      <div class="amenities-grid">
+      <div class="amenities-grid reveal-on-scroll">
         <div class="amenity-card">
           <div class="amenity-icon-box"><i class="fa-solid fa-bottle-water"></i></div>
           <h4 class="amenity-title">Mineral Water</h4>
@@ -3642,13 +3669,13 @@
        ========================================================================== -->
   <section class="routes-section" id="contactSection" style="background: rgba(8, 16, 36, 0.95);">
     <div class="container">
-      <div class="text-center">
+      <div class="text-center reveal-on-scroll">
         <div class="section-tag gold-tag"><i class="fa-solid fa-building"></i> Get In Touch</div>
         <h2 class="section-title">Visit Our <span class="gradient-text-gold">Head Office</span></h2>
         <p class="section-subtitle mx-auto">Available 24 hours a day, 7 days a week for reservations, tour quotes, and charter bookings.</p>
       </div>
 
-      <div class="head-office-single-wrap">
+      <div class="head-office-single-wrap reveal-on-scroll">
         <div class="head-office-card">
           <div class="head-office-icon-circle">
             <i class="fa-solid fa-location-dot"></i>
@@ -3929,9 +3956,13 @@
        Floating Quick Action Buttons (WhatsApp & Direct Phone Call)
        ========================================================================== -->
   <div class="floating-actions-container">
+    <button class="floating-btn btn-back-to-top" id="backToTopBtn" onclick="scrollToTop()" title="Back to Top" aria-label="Back to Top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
     <a href="https://wa.me/918446802069?text=Hi%20Jay%20Bhagwan%20Travels,%20I%20want%20to%20plan%20a%20trip." 
        target="_blank" class="floating-btn btn-whatsapp-float" title="Instant WhatsApp Chat" aria-label="WhatsApp Us">
       <i class="fa-brands fa-whatsapp"></i>
+      <span class="floating-fab-badge">Chat with Us</span>
     </a>
     <a href="tel:+918446802069" class="floating-btn btn-call-float" title="Call 24/7 Helpline" aria-label="Call Helpline">
       <i class="fa-solid fa-phone"></i>
@@ -3939,6 +3970,6 @@
   </div>
 
   <!-- Custom Logic Script -->
-  <script src="js/app.js?v=12.0"></script>
+  <script src="js/app.js?v=13.0"></script>
 </body>
 </html>

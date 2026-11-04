@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initDatePickers();
   initMobileDrawer();
   initStickyHeader();
+  initScrollProgressBar();
+  initScrollReveal();
+  initAnimatedCounters();
+  initBackToTop();
 });
 
 /* --------------------------------------------------------------------------
@@ -84,10 +88,13 @@ function filterState(stateKey, clickedBtn) {
   // Update button active state
   const buttons = document.querySelectorAll('.state-filter-nav .btn-state-tab');
   buttons.forEach(btn => btn.classList.remove('active'));
-  if (clickedBtn) {
-    clickedBtn.classList.add('active');
-  } else if (window.event && window.event.currentTarget) {
-    window.event.currentTarget.classList.add('active');
+  const activeBtn = clickedBtn || (window.event && window.event.currentTarget);
+  if (activeBtn) {
+    activeBtn.classList.add('active');
+    // Mobile smooth auto-centering in horizontal state scrollbar
+    if (activeBtn.scrollIntoView) {
+      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
   }
 
   // Filter destination cards with smooth staggered animation
@@ -576,3 +583,118 @@ document.addEventListener('keydown', (e) => {
     openReelModal(prevIndex);
   }
 });
+
+/* ==========================================================================
+   INTERACTIVE SCROLL & LUXURY ANIMATION CONTROLLERS
+   ========================================================================== */
+
+/* 1. Viewport Scroll Reading Progress Bar */
+function initScrollProgressBar() {
+  const progressBar = document.getElementById('pageScrollProgress');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    progressBar.style.width = `${Math.min(progress, 100)}%`;
+  }, { passive: true });
+}
+
+/* 2. Scroll-Reveal Intersection Observer */
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  if (!revealElements.length) return;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+  } else {
+    // Fallback if browser doesn't support IntersectionObserver
+    revealElements.forEach(el => el.classList.add('is-revealed'));
+  }
+}
+
+/* 3. Live Animated Statistics Counters */
+let hasStatsAnimated = false;
+function initAnimatedCounters() {
+  const statsSection = document.getElementById('statsCounterSection');
+  if (!statsSection) return;
+
+  const counterEls = statsSection.querySelectorAll('.counter-val');
+  if (!counterEls.length) return;
+
+  const runCounters = () => {
+    if (hasStatsAnimated) return;
+    hasStatsAnimated = true;
+
+    counterEls.forEach(el => {
+      const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+      const duration = 1800; // ms
+      const startTime = performance.now();
+
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease-out cubic calculation
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const currentVal = Math.floor(easeProgress * target);
+
+        el.textContent = currentVal.toLocaleString('en-IN');
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          el.textContent = target.toLocaleString('en-IN');
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    });
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0] && entries[0].isIntersecting) {
+        runCounters();
+        observer.disconnect();
+      }
+    }, { threshold: 0.3 });
+
+    observer.observe(statsSection);
+  } else {
+    runCounters();
+  }
+}
+
+/* 4. Back To Top Floating Action Button */
+function initBackToTop() {
+  const btn = document.getElementById('backToTopBtn');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  }, { passive: true });
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
