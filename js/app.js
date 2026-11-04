@@ -49,8 +49,8 @@ function formatDateISO(date) {
 function handleHeroWhatsAppBooking(e) {
   e.preventDefault();
 
-  const fromCity = document.getElementById('heroFromCity').value.trim() || 'Ahmedabad';
-  const destination = document.getElementById('heroDestination').value.trim() || 'Somnath & Dwarka';
+  const fromCity = document.getElementById('heroFromCity').value.trim() || 'Pune';
+  const destination = document.getElementById('heroDestination').value.trim() || 'Shirdi Sai Baba Mandir';
   const date = document.getElementById('heroTravelDate').value || 'Upcoming';
   const vehicle = document.getElementById('heroVehicleChoice').value;
   const passengers = document.getElementById('heroPassengers').value || '12';
@@ -171,7 +171,7 @@ function confirmTourToWhatsApp(e) {
   e.preventDefault();
 
   const dest = document.getElementById('modalDestName').value;
-  const fromCity = document.getElementById('modalFromCity').value.trim() || 'Ahmedabad';
+  const fromCity = document.getElementById('modalFromCity').value.trim() || 'Pune';
   const date = document.getElementById('modalTravelDate').value || 'Upcoming';
   const vehicle = document.getElementById('modalVehicleSelect').value;
   const persons = document.getElementById('modalPersonsCount').value || '12';
@@ -268,80 +268,80 @@ function initStickyHeader() {
 const REELS_DATA = [
   {
     id: 0,
-    dest: "Somnath Mahadev Temple, Gujarat",
-    location: "Somnath Temple, Gujarat",
-    caption: "Evening Aarti at Somnath Jyotirlinga with our luxury 17-Seater Force Urbania group! 🛕✨ Direct highway comfort. #Somnath #GujaratYatra #JayBhagwanTravels",
-    audio: "Har Har Shambhu (Divine Aarti Mix) • Jay Bhagwan Travels",
-    image: "assets/images/destinations/somnath-dwarka.jpg",
-    likes: "52.4K",
-    likesNum: 52400,
-    views: "480K Views",
+    dest: "Shirdi Sai Baba Samadhi Mandir, Maharashtra",
+    location: "Shirdi Sai Baba Samadhi Mandir, Maharashtra",
+    caption: "Divine Kakad Aarti at Shirdi Sai Baba Samadhi Mandir with our luxury 17-Seater Force Urbania group! 🙏✨ Shirdi VIP Darshan package. #Shirdi #SaiBaba #Maharashtra #JayBhagwanTravels",
+    audio: "Om Sai Namo Namah (Divine Chant) • Jay Bhagwan Travels",
+    image: "assets/images/destinations/shirdi-temple.jpg",
+    likes: "98.4K",
+    likesNum: 98400,
+    views: "1.2M Views",
     ambient: "radial-gradient(circle, rgba(255, 183, 3, 0.45), rgba(225, 48, 108, 0.3), transparent 70%)"
   },
   {
     id: 1,
-    dest: "Statue of Unity (Kevadia), Gujarat",
-    location: "Statue of Unity, Kevadia",
-    caption: "World's tallest Statue of Unity laser projection show at Kevadia! 🗽🎆 Weekend group tours departing every Friday! #StatueOfUnity #GujaratTourism",
-    audio: "Vande Mataram (Symphony Mix) • Trending Audio",
-    image: "assets/images/destinations/statue-of-unity.jpg",
-    likes: "91.8K",
-    likesNum: 91800,
-    views: "890K Views",
+    dest: "Trimbakeshwar Jyotirlinga, Nashik",
+    location: "Trimbakeshwar Shiva Temple, Nashik",
+    caption: "Holy Godavari Aarti & Maha Abhishek at Trimbakeshwar Jyotirlinga! 🛕🔱 Direct highway ride from Pune in luxury Tempo Traveller! #Trimbakeshwar #5Jyotirlinga #Maharashtra",
+    audio: "Har Har Mahadev (Rudra Mix) • Viral Audio",
+    image: "assets/images/destinations/trimbakeshwar.jpg",
+    likes: "82.6K",
+    likesNum: 82600,
+    views: "750K Views",
     ambient: "radial-gradient(circle, rgba(0, 210, 255, 0.45), rgba(225, 48, 108, 0.3), transparent 70%)"
   },
   {
     id: 2,
-    dest: "Kedarnath Dham, Uttarakhand",
-    location: "Kedarnath Dham, Himalayas",
-    caption: "Crossing holy clouds into Kedarnath Dham! 🏔️🙏 Pushback seats & mountain-expert drivers in our Tempo Travellers! #Kedarnath #ChardhamYatra",
-    audio: "Shiv Tandav Stotram (Bass Boost) • Viral Reel",
-    image: "assets/images/destinations/kedarnath-dham.jpg",
-    likes: "142K",
-    likesNum: 142000,
-    views: "1.4M Views",
-    ambient: "radial-gradient(circle, rgba(131, 58, 180, 0.45), rgba(0, 210, 255, 0.35), transparent 70%)"
-  },
-  {
-    id: 3,
-    dest: "Gulmarg & Sonamarg Snow Peaks, Kashmir & Ladakh",
-    location: "Gulmarg Snow Peaks, Kashmir",
-    caption: "Fresh snow falling on our luxury heated coach in Gulmarg Kashmir! ❄️🌨️ Panoramic glass roof views. Heaven on Earth! #KashmirDiaries #Gulmarg",
-    audio: "Kashmir Romantic Chords • Trending Audio",
-    image: "assets/images/destinations/gulmarg-snow.jpg",
-    likes: "67.1K",
-    likesNum: 67100,
-    views: "620K Views",
+    dest: "Mahabaleshwar & Panchgani Hill Station",
+    location: "Venna Lake & Arthur Seat, Mahabaleshwar",
+    caption: "Cruising through misty Sahyadri Ghats & fresh strawberry farms in Mahabaleshwar! 🍓⛰️ Best weekend family getaway from Pune! #Mahabaleshwar #SahyadriHills",
+    audio: "Sahyadri Monsoon Beats • Trending Audio",
+    image: "assets/images/destinations/mahabaleshwar.jpg",
+    likes: "64.2K",
+    likesNum: 64200,
+    views: "610K Views",
     ambient: "radial-gradient(circle, rgba(0, 210, 255, 0.5), rgba(255, 255, 255, 0.2), transparent 70%)"
   },
   {
+    id: 3,
+    dest: "Lonavala, Khandala & Karla Caves",
+    location: "Tiger Point & Bhushi Dam, Lonavala",
+    caption: "Chasing monsoon clouds & waterfalls at Tiger Point Lonavala! 🌧️⛰️ Group fun with chilled AC & premium pushback seating! #Lonavala #TigerPoint",
+    audio: "Rain In Sahyadri (Acoustic) • Trending Reel",
+    image: "assets/images/destinations/lonavala-khandala.jpg",
+    likes: "71.5K",
+    likesNum: 71500,
+    views: "690K Views",
+    ambient: "radial-gradient(circle, rgba(131, 58, 180, 0.45), rgba(0, 210, 255, 0.35), transparent 70%)"
+  },
+  {
     id: 4,
-    dest: "Jaipur (The Pink City), Rajasthan",
-    location: "Hawa Mahal & Amber Fort, Jaipur",
-    caption: "Cruising past Hawa Mahal & Amber Fort in our 32-Seater BharatBenz Coach! 🏰👑 Live royalty in Rajasthan! #PinkCity #RajasthanTour",
-    audio: "Kesariya Balam (Royal Mix) • Viral Audio",
-    image: "assets/images/destinations/jaipur-hawa-mahal.jpg",
-    likes: "78.3K",
-    likesNum: 78300,
-    views: "730K Views",
+    dest: "Raigad Fort (Capital of Swarajya)",
+    location: "Chhatrapati Shivaji Maharaj Samadhi, Raigad Fort",
+    caption: "Standing in awe at the majestic capital of Chhatrapati Shivaji Maharaj! 🚩⚔️ Historical heritage tours from Pune! Jai Shivray! #Raigad #ShivajiMaharaj #MarathaEmpire",
+    audio: "Jayostute Chhatrapati (War Horn Mix) • Viral Audio",
+    image: "assets/images/destinations/raigad-fort.jpg",
+    likes: "112K",
+    likesNum: 112000,
+    views: "1.5M Views",
     ambient: "radial-gradient(circle, rgba(255, 183, 3, 0.5), rgba(225, 48, 108, 0.35), transparent 70%)"
   },
   {
     id: 5,
-    dest: "Calangute & Baga Beach Party Hub, Goa",
-    location: "Palolem & Calangute Beach, Goa",
-    caption: "Sunset coastal drive along Palolem & Calangute Beach Goa! 🌴🍹 Group trips made unforgettable with onboard music & chilled AC! #GoaTrip",
-    audio: "Sunset Tropics Vibes • Trending Reel",
-    image: "assets/images/destinations/goa-beaches.jpg",
-    likes: "54.2K",
-    likesNum: 54200,
-    views: "510K Views",
+    dest: "Gateway of India & Mumbai Darshan",
+    location: "Marine Drive & Gateway of India, Mumbai",
+    caption: "Sunset coastal drive along Marine Drive & Gateway of India! 🌊🏙️ Full day Mumbai Darshan package in luxury AC mini-coach! #MumbaiDarshan #GatewayOfIndia",
+    audio: "Yeh Hai Bombay Meri Jaan (Lofi Mix) • Trending Audio",
+    image: "assets/images/destinations/mumbai-gateway.jpg",
+    likes: "56.9K",
+    likesNum: 56900,
+    views: "530K Views",
     ambient: "radial-gradient(circle, rgba(225, 48, 108, 0.5), rgba(255, 183, 3, 0.4), transparent 70%)"
   }
 ];
 
 let currentReelIndex = 0;
-let currentReelDest = "Somnath Mahadev Temple, Gujarat";
+let currentReelDest = "Shirdi Sai Baba Samadhi Mandir, Maharashtra";
 let reelTimer = null;
 let reelProgress = 0;
 let isPlayerMuted = false;
