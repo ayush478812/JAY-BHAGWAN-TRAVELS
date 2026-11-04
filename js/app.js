@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDatePickers();
   initMobileDrawer();
   initStickyHeader();
+  initNavScrollspy();
   initScrollProgressBar();
   initScrollReveal();
   initAnimatedCounters();
@@ -467,4 +468,142 @@ function initParallaxEffects() {
       }
     }
   }, { passive: true });
+}
+
+/* 6. Dynamic Smooth Moving Nav Indicator & Scrollspy */
+function initNavScrollspy() {
+  const navMenu = document.getElementById('navMenu');
+  const line = document.getElementById('navActiveLine');
+  const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+  const drawerLinks = document.querySelectorAll('.drawer-menu-list .drawer-link');
+  if (!navMenu || !line || !navLinks.length) return;
+
+  const sectionConfig = [
+    { id: 'home', el: document.getElementById('home') },
+    { id: 'planTripSection', el: document.getElementById('planTripSection') },
+    { id: 'destinationsSection', el: document.getElementById('destinationsSection') },
+    { id: 'whyChooseSection', el: document.getElementById('whyChooseSection') },
+    { id: 'amenitiesSection', el: document.getElementById('amenitiesSection') },
+    { id: 'contactSection', el: document.getElementById('contactSection') }
+  ];
+
+  const sections = sectionConfig.filter(s => s.el !== null);
+
+  let currentActiveId = 'home';
+  let isHovering = false;
+
+  function moveLineTo(targetLink) {
+    if (!targetLink) return;
+    const menuRect = navMenu.getBoundingClientRect();
+    const linkRect = targetLink.getBoundingClientRect();
+
+    // Position relative to navMenu
+    const left = linkRect.left - menuRect.left;
+    const width = linkRect.width;
+
+    line.style.opacity = '1';
+    line.style.transform = `translateX(${left}px)`;
+    line.style.width = `${width}px`;
+  }
+
+  function setActive(id) {
+    currentActiveId = id;
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${id}`) {
+        link.classList.add('active');
+        if (!isHovering) {
+          moveLineTo(link);
+        }
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    drawerLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${id}`) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  // Hover transitions: line smoothly glides to hovered item, returns to active on leave
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      isHovering = true;
+      moveLineTo(link);
+    });
+  });
+
+  navMenu.addEventListener('mouseleave', () => {
+    isHovering = false;
+    const activeLink = navMenu.querySelector('.nav-link.active') || navLinks[0];
+    moveLineTo(activeLink);
+  });
+
+  // Click on nav item immediately glides the line
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const targetId = href.substring(1);
+        setActive(targetId);
+      }
+    });
+  });
+
+  function getElementTop(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top + window.scrollY;
+  }
+
+  // Scrollspy: accurately tracks current position in page
+  let scrollTimeout;
+  function updateOnScroll() {
+    const scrollPos = window.scrollY + 220; // Natural visual offset including sticky header
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+
+    // Check bottom of page
+    if (window.scrollY + windowHeight >= docHeight - 80) {
+      setActive('contactSection');
+      return;
+    }
+
+    // Check top of page
+    if (window.scrollY < 120) {
+      setActive('home');
+      return;
+    }
+
+    // Find current active section from bottom to top
+    let activeSecId = 'home';
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const sec = sections[i];
+      const top = getElementTop(sec.el);
+      if (scrollPos >= top) {
+        activeSecId = sec.id;
+        break;
+      }
+    }
+    setActive(activeSecId);
+  }
+
+  window.addEventListener('scroll', updateOnScroll, { passive: true });
+
+  window.addEventListener('resize', () => {
+    const activeLink = navMenu.querySelector('.nav-link.active') || navLinks[0];
+    moveLineTo(activeLink);
+  });
+
+  // Initial line placement once page layout stabilizes
+  setTimeout(() => {
+    updateOnScroll();
+    const activeLink = navMenu.querySelector('.nav-link.active') || navLinks[0];
+    moveLineTo(activeLink);
+  }, 150);
 }

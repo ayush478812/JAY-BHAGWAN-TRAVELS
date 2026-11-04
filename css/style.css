@@ -400,40 +400,47 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   flex-shrink: 0;
+  position: relative;
 }
 
 .nav-link {
   font-size: 0.91rem;
   font-weight: 600;
   color: #cbd5e1;
-  padding: 8px 0;
+  padding: 8px 4px;
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   white-space: nowrap;
+  transition: color 0.3s ease;
 }
 
+/* Hide static per-item ::after underline so the single dynamic bar slides smoothly */
 .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--cyan-primary), var(--gold-primary));
-  transition: width var(--transition-fast);
-  border-radius: 2px;
+  display: none !important;
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--text-white);
 }
 
-.nav-link:hover::after, .nav-link.active::after {
-  width: 100%;
+/* Dynamic Smooth Sliding Indicator Bar */
+.nav-active-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan-primary), var(--gold-primary));
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.6), 0 0 8px rgba(255, 199, 0, 0.5);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s ease;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+  will-change: transform, width;
 }
 
 /* Dropdown Menu (Manage Ticket) */
@@ -2623,13 +2630,19 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
 }
 
-.drawer-link:hover {
+.drawer-link:hover,
+.drawer-link.active {
   color: var(--gold-primary);
 }
 
 .drawer-link i {
   color: var(--cyan-primary);
   width: 22px;
+  transition: color 0.3s ease;
+}
+
+.drawer-link.active i {
+  color: var(--gold-primary);
 }
 
 /* --------------------------------------------------------------------------
