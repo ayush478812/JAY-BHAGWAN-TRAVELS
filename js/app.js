@@ -1,5 +1,5 @@
 /* ==========================================================================
-   JAY BHAGWAN TRAVELS - Luxury Roadways & Premier Tour Packages
+   ANVISHA TRAVELS - Luxury Roadways & Premier Tour Packages
    Direct WhatsApp Tour Booking & State Destination Explorer
    ========================================================================== */
 
@@ -15,14 +15,12 @@ let activeFilter = 'all';
 document.addEventListener('DOMContentLoaded', () => {
   initDatePickers();
   initMobileDrawer();
-  initStickyHeader();
-  initNavScrollspy();
-  initScrollProgressBar();
+  initBackgroundAnimation();
+  initSmoothAnchorScroll();
+  initUnifiedScroll();
   initScrollReveal();
   initAnimatedCounters();
-  initBackToTop();
   initShowMore();
-  initParallaxEffects();
 });
 
 /* --------------------------------------------------------------------------
@@ -64,7 +62,7 @@ function handleHeroWhatsAppBooking(e) {
   const vehicle = document.getElementById('heroVehicleChoice').value;
   const passengers = document.getElementById('heroPassengers').value || '12';
 
-  const msg = `Hi Jay Bhagwan Travels,\n\nI want to go to *${destination}* from *${fromCity}*.\n- Travel Date: ${date}\n- Preferred Vehicle: ${vehicle}\n- Number of Travelers: ${passengers} Persons\n\nPlease share the best tour package rate and coach availability.`;
+  const msg = `Hi Anvisha Travels,\n\nI want to go to *${destination}* from *${fromCity}*.\n- Journey Date: ${date}\n- Choose Vehicle: ${vehicle}\n- Total Passengers: ${passengers} Persons\n\nPlease share the best tour package rate and coach availability.`;
 
   const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
   window.open(waUrl, '_blank');
@@ -109,13 +107,12 @@ function applyShowMore() {
   const totalMatching = matchingCards.length;
   const showMoreWrap = document.getElementById('showMoreWrap');
   const btnShowMore = document.getElementById('btnShowMore');
-  const showMoreCount = document.getElementById('showMoreCount');
 
   // Hide all cards first
   const allCards = document.querySelectorAll('#destinationsGrid .destination-card');
   allCards.forEach(card => {
     card.style.display = 'none';
-    card.classList.remove('card-fade-in', 'card-hidden');
+    card.classList.remove('card-fade-in');
   });
 
   // Show cards up to current limit
@@ -127,7 +124,7 @@ function applyShowMore() {
       card.classList.remove('card-fade-in');
       void card.offsetWidth;
       card.classList.add('card-fade-in');
-      card.style.animationDelay = `${Math.min(stagger * 0.05, 0.4)}s`;
+      card.style.animationDelay = `${Math.min(stagger * 0.04, 0.35)}s`;
       stagger++;
     }
   });
@@ -135,15 +132,12 @@ function applyShowMore() {
   // Update Show More button state
   if (showMoreWrap && btnShowMore) {
     if (totalMatching <= CARDS_PER_PAGE) {
-      // Not enough cards to need the button
       showMoreWrap.style.display = 'none';
     } else if (isShowingAll || limit >= totalMatching) {
-      // All cards are shown - offer "Show Less"
       showMoreWrap.style.display = 'flex';
       btnShowMore.innerHTML = '<span class="show-more-text"><i class="fa-solid fa-chevron-up"></i> Show Less</span>';
       btnShowMore.classList.add('showing-less');
     } else {
-      // More cards available - offer "Show More"
       const remaining = totalMatching - limit;
       showMoreWrap.style.display = 'flex';
       btnShowMore.innerHTML = `<span class="show-more-text"><i class="fa-solid fa-chevron-down"></i> Show More Destinations</span><span class="show-more-count">${remaining} more</span>`;
@@ -157,11 +151,9 @@ function toggleShowMore() {
   const totalMatching = matchingCards.length;
 
   if (isShowingAll || currentVisibleCount >= totalMatching) {
-    // Currently showing all → collapse back to initial
     isShowingAll = false;
     currentVisibleCount = CARDS_PER_PAGE;
     applyShowMore();
-    // Smooth scroll back to top of destinations
     const destSection = document.getElementById('destinationsSection');
     if (destSection) {
       setTimeout(() => {
@@ -169,7 +161,6 @@ function toggleShowMore() {
       }, 100);
     }
   } else {
-    // Show next batch
     currentVisibleCount += CARDS_PER_PAGE;
     if (currentVisibleCount >= totalMatching) {
       isShowingAll = true;
@@ -179,19 +170,16 @@ function toggleShowMore() {
 }
 
 /* --------------------------------------------------------------------------
-   State Tabs Filter (Interactive States & Famous Places)
+   State Tabs Filter (Interactive Categories & Famous Places)
    -------------------------------------------------------------------------- */
 function filterState(stateKey, clickedBtn) {
-  // Clear search input if state tab is clicked
   const searchInput = document.getElementById('placeSearchInput');
   if (searchInput) searchInput.value = '';
 
-  // Update active filter
   activeFilter = stateKey;
   currentVisibleCount = CARDS_PER_PAGE;
   isShowingAll = false;
 
-  // Update button active state
   const buttons = document.querySelectorAll('.state-filter-nav .btn-state-tab');
   buttons.forEach(btn => btn.classList.remove('active'));
   const activeBtn = clickedBtn || (window.event && window.event.currentTarget);
@@ -202,7 +190,6 @@ function filterState(stateKey, clickedBtn) {
     }
   }
 
-  // Apply show more with new filter
   applyShowMore();
 }
 
@@ -216,7 +203,6 @@ function searchPlacesLive() {
   const showMoreWrap = document.getElementById('showMoreWrap');
 
   if (query) {
-    // When searching, show all matching cards (bypass show more)
     if (showMoreWrap) showMoreWrap.style.display = 'none';
 
     let stagger = 0;
@@ -241,7 +227,6 @@ function searchPlacesLive() {
 
     document.querySelectorAll('.state-filter-nav .btn-state-tab').forEach(b => b.classList.remove('active'));
   } else {
-    // Reset to filtered view with show more
     const allBtn = document.querySelector('.state-filter-nav .btn-state-tab');
     if (allBtn) allBtn.classList.add('active');
     activeFilter = 'all';
@@ -275,7 +260,7 @@ function confirmTourToWhatsApp(e) {
   const vehicle = document.getElementById('modalVehicleSelect').value;
   const persons = document.getElementById('modalPersonsCount').value || '12';
 
-  const msg = `Hi Jay Bhagwan Travels,\n\nI want to go to *${dest}* from *${fromCity}*.\n- Date: ${date}\n- Vehicle: ${vehicle}\n- Number of Persons: ${persons}\n\nPlease provide all-inclusive quotation and availability.`;
+  const msg = `Hi Anvisha Travels,\n\nI want to go to *${dest}* from *${fromCity}*.\n- Journey Date: ${date}\n- Choose Vehicle: ${vehicle}\n- Total Passengers: ${persons} Persons\n\nPlease provide all-inclusive quotation and availability.`;
 
   closeModal('tourBookingModal');
 
@@ -296,7 +281,6 @@ function closeModal(modalId) {
   if (modal) modal.classList.remove('active');
 }
 
-// Close modal when clicking outside on dark backdrop
 document.addEventListener('click', (e) => {
   if (e.target.classList.contains('modal-overlay')) {
     e.target.classList.remove('active');
@@ -326,37 +310,207 @@ function initMobileDrawer() {
   });
 }
 
-function initStickyHeader() {
-  const header = document.getElementById('mainHeader');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.style.background = 'rgba(4, 9, 20, 0.96)';
-      header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.7)';
-    } else {
-      header.style.background = 'rgba(5, 11, 24, 0.85)';
-      header.style.boxShadow = 'none';
-    }
+/* --------------------------------------------------------------------------
+   Silky Smooth Anchor Navigation (Offset for Sticky Header)
+   -------------------------------------------------------------------------- */
+function initSmoothAnchorScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#' || targetId.length <= 1) return;
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        const headerOffset = 80;
+        const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+        const drawer = document.getElementById('mobileDrawer');
+        if (drawer && drawer.classList.contains('active')) {
+          drawer.classList.remove('active');
+        }
+      }
+    });
   });
 }
 
 /* ==========================================================================
-   INTERACTIVE SCROLL & LUXURY ANIMATION CONTROLLERS
+   UNIFIED 60/120FPS SCROLL RUNNER (Buttery Smooth on Mobile & Desktop)
    ========================================================================== */
-
-/* 1. Viewport Scroll Reading Progress Bar */
-function initScrollProgressBar() {
+function initUnifiedScroll() {
+  const header = document.getElementById('mainHeader');
   const progressBar = document.getElementById('pageScrollProgress');
-  if (!progressBar) return;
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  const heroContent = document.querySelector('.hero-header-center');
+  const navMenu = document.getElementById('navMenu');
+  const line = document.getElementById('navActiveLine');
+  const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+  const drawerLinks = document.querySelectorAll('.drawer-menu-list .drawer-link');
+
+  const sectionConfig = [
+    { id: 'home', el: document.getElementById('home') },
+    { id: 'planTripSection', el: document.getElementById('planTripSection') },
+    { id: 'destinationsSection', el: document.getElementById('destinationsSection') },
+    { id: 'whyChooseSection', el: document.getElementById('whyChooseSection') },
+    { id: 'amenitiesSection', el: document.getElementById('amenitiesSection') },
+    { id: 'contactSection', el: document.getElementById('contactSection') }
+  ];
+  const sections = sectionConfig.filter(s => s.el !== null);
+
+  let currentActiveId = 'home';
+  let isHovering = false;
+
+  function moveLineTo(targetLink) {
+    if (!targetLink || !line || !navMenu) return;
+    const menuRect = navMenu.getBoundingClientRect();
+    const linkRect = targetLink.getBoundingClientRect();
+
+    const left = linkRect.left - menuRect.left;
+    const width = linkRect.width;
+
+    line.style.opacity = '1';
+    line.style.transform = `translateX(${left}px)`;
+    line.style.width = `${width}px`;
+  }
+
+  function setActive(id) {
+    currentActiveId = id;
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${id}`) {
+        link.classList.add('active');
+        if (!isHovering) moveLineTo(link);
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    drawerLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${id}`) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  // Hover transitions
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      isHovering = true;
+      moveLineTo(link);
+    });
+  });
+
+  if (navMenu) {
+    navMenu.addEventListener('mouseleave', () => {
+      isHovering = false;
+      const activeLink = navMenu.querySelector('.nav-link.active') || navLinks[0];
+      moveLineTo(activeLink);
+    });
+  }
+
+  function getElementTop(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top + window.scrollY;
+  }
+
+  // Unified Single RAF Tick
+  let isTicking = false;
+  function onScrollTick() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+
+    // 1. Sticky Header
+    if (header) {
+      if (scrollY > 50) {
+        header.style.background = 'rgba(3, 11, 28, 0.96)';
+        header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.75)';
+      } else {
+        header.style.background = 'rgba(3, 11, 28, 0.82)';
+        header.style.boxShadow = 'none';
+      }
+    }
+
+    // 2. Reading Progress Bar
+    if (progressBar) {
+      const scrollHeight = docHeight - windowHeight;
+      const progress = scrollHeight > 0 ? (scrollY / scrollHeight) * 100 : 0;
+      progressBar.style.width = `${Math.min(progress, 100)}%`;
+    }
+
+    // 3. Back To Top Button
+    if (backToTopBtn) {
+      if (scrollY > 400) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    }
+
+    // 4. Parallax
+    if (heroContent && scrollY < windowHeight) {
+      heroContent.style.transform = `translateY(${scrollY * 0.12}px)`;
+      heroContent.style.opacity = `${Math.max(1 - (scrollY / (windowHeight * 0.75)), 0)}`;
+    }
+
+    // 5. Nav Scrollspy
+    const scrollPos = scrollY + 220;
+    if (scrollY + windowHeight >= docHeight - 80) {
+      setActive('contactSection');
+    } else if (scrollY < 120) {
+      setActive('home');
+    } else {
+      let activeSecId = 'home';
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sec = sections[i];
+        const top = getElementTop(sec.el);
+        if (scrollPos >= top) {
+          activeSecId = sec.id;
+          break;
+        }
+      }
+      setActive(activeSecId);
+    }
+  }
 
   window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-    progressBar.style.width = `${Math.min(progress, 100)}%`;
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        onScrollTick();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
   }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    const activeLink = navMenu ? (navMenu.querySelector('.nav-link.active') || navLinks[0]) : null;
+    if (activeLink) moveLineTo(activeLink);
+  });
+
+  setTimeout(() => {
+    onScrollTick();
+    const activeLink = navMenu ? (navMenu.querySelector('.nav-link.active') || navLinks[0]) : null;
+    if (activeLink) moveLineTo(activeLink);
+  }, 150);
 }
 
-/* 2. Scroll-Reveal Intersection Observer */
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Scroll-Reveal Intersection Observer
+   -------------------------------------------------------------------------- */
 function initScrollReveal() {
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
   if (!revealElements.length) return;
@@ -380,7 +534,9 @@ function initScrollReveal() {
   }
 }
 
-/* 3. Live Animated Statistics Counters */
+/* --------------------------------------------------------------------------
+   Animated Trust Statistics Counters
+   -------------------------------------------------------------------------- */
 let hasStatsAnimated = false;
 function initAnimatedCounters() {
   const statsSection = document.getElementById('statsCounterSection');
@@ -395,7 +551,7 @@ function initAnimatedCounters() {
 
     counterEls.forEach(el => {
       const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-      const duration = 1800; // ms
+      const duration = 1800;
       const startTime = performance.now();
 
       function updateCounter(currentTime) {
@@ -431,179 +587,160 @@ function initAnimatedCounters() {
   }
 }
 
-/* 4. Back To Top Floating Action Button */
-function initBackToTop() {
-  const btn = document.getElementById('backToTopBtn');
-  if (!btn) return;
+/* ==========================================================================
+   DYNAMIC STARRY NIGHT & AIRPLANE FLIGHT TRAIL BACKGROUND ANIMATION
+   Matched to the Anvisha Travels Mountain & Starry Skies Emblem
+   ========================================================================== */
+function initBackgroundAnimation() {
+  const canvas = document.getElementById('bgAnimationCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      btn.classList.add('show');
-    } else {
-      btn.classList.remove('show');
-    }
-  }, { passive: true });
-}
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
 
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
+  const isMobile = width < 768;
+  const particleCount = isMobile ? 22 : 46;
 
-/* 5. Parallax & Floating Effects */
-function initParallaxEffects() {
-  // Add subtle parallax to hero section
-  const hero = document.querySelector('.hero-section');
-  if (!hero) return;
-
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    if (scrolled < window.innerHeight) {
-      const heroContent = hero.querySelector('.hero-header-center');
-      if (heroContent) {
-        heroContent.style.transform = `translateY(${scrolled * 0.15}px)`;
-        heroContent.style.opacity = `${1 - (scrolled / (window.innerHeight * 0.8))}`;
-      }
-    }
-  }, { passive: true });
-}
-
-/* 6. Dynamic Smooth Moving Nav Indicator & Scrollspy */
-function initNavScrollspy() {
-  const navMenu = document.getElementById('navMenu');
-  const line = document.getElementById('navActiveLine');
-  const navLinks = document.querySelectorAll('.nav-menu .nav-link');
-  const drawerLinks = document.querySelectorAll('.drawer-menu-list .drawer-link');
-  if (!navMenu || !line || !navLinks.length) return;
-
-  const sectionConfig = [
-    { id: 'home', el: document.getElementById('home') },
-    { id: 'planTripSection', el: document.getElementById('planTripSection') },
-    { id: 'destinationsSection', el: document.getElementById('destinationsSection') },
-    { id: 'whyChooseSection', el: document.getElementById('whyChooseSection') },
-    { id: 'amenitiesSection', el: document.getElementById('amenitiesSection') },
-    { id: 'contactSection', el: document.getElementById('contactSection') }
+  // Colors matched to Anvisha Travels Logo: Warm Gold, Sky Blue, Pure White
+  const colors = [
+    'rgba(245, 173, 24, ',  // Warm Gold
+    'rgba(56, 189, 248, ',  // Sky Blue
+    'rgba(255, 255, 255, '  // Crisp White
   ];
 
-  const sections = sectionConfig.filter(s => s.el !== null);
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.radius = Math.random() * 1.5 + 0.6;
+      this.colorBase = colors[Math.floor(Math.random() * colors.length)];
+      this.alpha = Math.random() * 0.6 + 0.2;
+      this.alphaSpeed = (Math.random() * 0.008 + 0.003) * (Math.random() < 0.5 ? 1 : -1);
+      this.vx = (Math.random() - 0.5) * 0.25;
+      this.vy = -(Math.random() * 0.35 + 0.15);
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.alpha += this.alphaSpeed;
 
-  let currentActiveId = 'home';
-  let isHovering = false;
+      if (this.alpha > 0.85 || this.alpha < 0.15) {
+        this.alphaSpeed = -this.alphaSpeed;
+      }
 
-  function moveLineTo(targetLink) {
-    if (!targetLink) return;
-    const menuRect = navMenu.getBoundingClientRect();
-    const linkRect = targetLink.getBoundingClientRect();
-
-    // Position relative to navMenu
-    const left = linkRect.left - menuRect.left;
-    const width = linkRect.width;
-
-    line.style.opacity = '1';
-    line.style.transform = `translateX(${left}px)`;
-    line.style.width = `${width}px`;
+      if (this.y < -10) this.y = height + 10;
+      if (this.x < -10) this.x = width + 10;
+      if (this.x > width + 10) this.x = -10;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.colorBase + this.alpha + ')';
+      ctx.fill();
+    }
   }
 
-  function setActive(id) {
-    currentActiveId = id;
-
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href === `#${id}`) {
-        link.classList.add('active');
-        if (!isHovering) {
-          moveLineTo(link);
+  // Shooting star / airplane flight streak (mirroring airplane flight trail in logo)
+  class FlightStreak {
+    constructor() {
+      this.active = false;
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * (width * 0.8);
+      this.y = Math.random() * (height * 0.35);
+      this.length = Math.random() * 110 + 70;
+      this.speed = Math.random() * 9 + 11;
+      this.angle = Math.PI / 4.2; // ~42 degree flight angle
+      this.alpha = 1;
+      this.active = false;
+      this.nextTrigger = Date.now() + Math.random() * 5000 + 3500;
+    }
+    update() {
+      if (!this.active) {
+        if (Date.now() > this.nextTrigger) {
+          this.active = true;
+          this.x = Math.random() * (width * 0.8);
+          this.y = Math.random() * (height * 0.3);
+          this.alpha = 1;
         }
-      } else {
-        link.classList.remove('active');
+        return;
       }
-    });
 
-    drawerLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href === `#${id}`) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
-  }
+      this.x += Math.cos(this.angle) * this.speed;
+      this.y += Math.sin(this.angle) * this.speed;
+      this.alpha -= 0.024;
 
-  // Hover transitions: line smoothly glides to hovered item, returns to active on leave
-  navLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      isHovering = true;
-      moveLineTo(link);
-    });
-  });
-
-  navMenu.addEventListener('mouseleave', () => {
-    isHovering = false;
-    const activeLink = navMenu.querySelector('.nav-link.active') || navLinks[0];
-    moveLineTo(activeLink);
-  });
-
-  // Click on nav item immediately glides the line
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        const targetId = href.substring(1);
-        setActive(targetId);
-      }
-    });
-  });
-
-  function getElementTop(el) {
-    const rect = el.getBoundingClientRect();
-    return rect.top + window.scrollY;
-  }
-
-  // Scrollspy: accurately tracks current position in page
-  let scrollTimeout;
-  function updateOnScroll() {
-    const scrollPos = window.scrollY + 220; // Natural visual offset including sticky header
-    const windowHeight = window.innerHeight;
-    const docHeight = document.documentElement.scrollHeight;
-
-    // Check bottom of page
-    if (window.scrollY + windowHeight >= docHeight - 80) {
-      setActive('contactSection');
-      return;
-    }
-
-    // Check top of page
-    if (window.scrollY < 120) {
-      setActive('home');
-      return;
-    }
-
-    // Find current active section from bottom to top
-    let activeSecId = 'home';
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const sec = sections[i];
-      const top = getElementTop(sec.el);
-      if (scrollPos >= top) {
-        activeSecId = sec.id;
-        break;
+      if (this.alpha <= 0 || this.x > width || this.y > height) {
+        this.reset();
       }
     }
-    setActive(activeSecId);
+    draw() {
+      if (!this.active || this.alpha <= 0) return;
+      ctx.save();
+      const tailX = this.x - Math.cos(this.angle) * this.length;
+      const tailY = this.y - Math.sin(this.angle) * this.length;
+
+      const grad = ctx.createLinearGradient(tailX, tailY, this.x, this.y);
+      grad.addColorStop(0, 'rgba(245, 173, 24, 0)');
+      grad.addColorStop(0.5, `rgba(56, 189, 248, ${this.alpha * 0.5})`);
+      grad.addColorStop(1, `rgba(255, 255, 255, ${this.alpha})`);
+
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(this.x, this.y);
+      ctx.stroke();
+
+      // Glowing head
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+      ctx.shadowColor = '#fed269';
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.restore();
+    }
   }
 
-  window.addEventListener('scroll', updateOnScroll, { passive: true });
+  const particles = Array.from({ length: particleCount }, () => new Particle());
+  const streak = new FlightStreak();
+
+  let isRunning = true;
+  function animate() {
+    if (!isRunning) return;
+    ctx.clearRect(0, 0, width, height);
+
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+
+    streak.update();
+    streak.draw();
+
+    requestAnimationFrame(animate);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      isRunning = false;
+    } else {
+      isRunning = true;
+      requestAnimationFrame(animate);
+    }
+  });
 
   window.addEventListener('resize', () => {
-    const activeLink = navMenu.querySelector('.nav-link.active') || navLinks[0];
-    moveLineTo(activeLink);
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
   });
 
-  // Initial line placement once page layout stabilizes
-  setTimeout(() => {
-    updateOnScroll();
-    const activeLink = navMenu.querySelector('.nav-link.active') || navLinks[0];
-    moveLineTo(activeLink);
-  }, 150);
+  requestAnimationFrame(animate);
 }
