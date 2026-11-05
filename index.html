@@ -312,12 +312,8 @@
 
 <body>
 
-  <!-- Dynamic Ambient Animated Background (Mobile + PC Optimized) -->
+  <!-- Dynamic Ambient Animated Background (Mobile + PC Optimized, 120 FPS) -->
   <div class="animated-bg-container" aria-hidden="true">
-    <div class="bg-glow-orb orb-cyan"></div>
-    <div class="bg-glow-orb orb-gold"></div>
-    <div class="bg-glow-orb orb-blue"></div>
-    <div class="bg-glow-orb orb-purple"></div>
     <div class="bg-ambient-grid"></div>
     <canvas id="bgAnimationCanvas" class="bg-canvas-particles"></canvas>
   </div>
@@ -375,8 +371,10 @@
       <nav class="nav-menu" id="navMenu">
         <a href="#home" class="nav-link active">Home</a>
         <a href="#planTripSection" class="nav-link">Plan My Trip</a>
-        <a href="#destinationsSection" class="nav-link">Maharashtra Destinations</a>
+        <a href="#fleetSection" class="nav-link">Luxury Fleet</a>
+        <a href="#destinationsSection" class="nav-link">Destinations</a>
         <a href="#whyChooseSection" class="nav-link">Why Choose Us</a>
+        <a href="#reviewsSection" class="nav-link">Reviews</a>
         <a href="#amenitiesSection" class="nav-link">Amenities</a>
         <a href="#faqSection" class="nav-link">FAQs</a>
         <a href="#contactSection" class="nav-link">Contact</a>
@@ -412,10 +410,12 @@
     <div class="drawer-menu-list">
       <a href="#home" class="drawer-link"><i class="fa-solid fa-house"></i> Home</a>
       <a href="#planTripSection" class="drawer-link"><i class="fa-solid fa-map-location-dot"></i> Plan My Trip</a>
-      <a href="#destinationsSection" class="drawer-link"><i class="fa-solid fa-map-location-dot"></i> Maharashtra
-        Destinations</a>
+      <a href="#fleetSection" class="drawer-link"><i class="fa-solid fa-van-shuttle"></i> Luxury Fleet</a>
+      <a href="#destinationsSection" class="drawer-link"><i class="fa-solid fa-map"></i> Maharashtra Destinations</a>
       <a href="#whyChooseSection" class="drawer-link"><i class="fa-solid fa-award"></i> Why Choose Us</a>
+      <a href="#reviewsSection" class="drawer-link"><i class="fa-solid fa-star"></i> Guest Reviews</a>
       <a href="#amenitiesSection" class="drawer-link"><i class="fa-solid fa-couch"></i> Luxury Amenities</a>
+      <a href="#faqSection" class="drawer-link"><i class="fa-solid fa-circle-question"></i> FAQs</a>
       <a href="#contactSection" class="drawer-link"><i class="fa-solid fa-headset"></i> Contact Us</a>
     </div>
     <div style="margin-top: auto; display: flex; flex-direction: column; gap: 12px;">
@@ -688,7 +688,164 @@
     </div>
   </section>
 
-    <!-- ==========================================================================
+  <!-- ==========================================================================
+       Premier Luxury Fleet Section (Force Urbania, Tempo Traveller, Luxury Coaches)
+       ========================================================================== -->
+  <section class="fleet-section" id="fleetSection">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-tag gold-tag"><i class="fa-solid fa-van-shuttle"></i> Our Luxury Roadways</div>
+        <h2 class="section-title">Pune's Premier <span class="gradient-text-gold">Luxury Fleet</span></h2>
+        <p class="section-subtitle mx-auto">
+          Experience supreme comfort on Maharashtra's highways & Sahyadri ghats. 100% sanitized, fully air-conditioned, and driven by verified highway chauffeurs.
+        </p>
+      </div>
+
+      <div class="fleet-cards-grid">
+        <!-- Fleet Card 1: Force Urbania Luxury Van -->
+        <div class="fleet-card">
+          <div class="fleet-badge-top">Executive Luxury</div>
+          <div class="fleet-card-image-wrap">
+            <img src="assets/images/fleet/urbania-17-seater.png" alt="Force Urbania Luxury Van Hire Pune" class="fleet-card-img" loading="lazy">
+          </div>
+          <div class="fleet-card-body">
+            <div class="fleet-seating-pill">
+              <i class="fa-solid fa-user-group"></i> 13 & 17 Seater Options
+            </div>
+            <h3 class="fleet-card-title">Force Urbania Luxury Van</h3>
+            <p class="fleet-card-desc">
+              World-class aerodynamics with aircraft-style panoramic windows, individual AC vents, and ultra-plush reclining captain seats.
+            </p>
+            <div class="fleet-feature-tags">
+              <span><i class="fa-solid fa-snowflake"></i> Climate Control</span>
+              <span><i class="fa-solid fa-bolt"></i> Fast USB Ports</span>
+              <span><i class="fa-solid fa-chair"></i> Recliner Seats</span>
+              <span><i class="fa-solid fa-suitcase-rolling"></i> Large Boot</span>
+            </div>
+            <div class="fleet-card-footer">
+              <a href="https://wa.me/918446802069?text=Hi%20Anvisha%20Travels,%20I%20want%20to%20inquire%20about%20Force%20Urbania%20rental%20from%20Pune." target="_blank" class="btn-fleet-book">
+                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fleet Card 2: Luxury Tempo Traveller -->
+        <div class="fleet-card featured-fleet-card">
+          <div class="fleet-badge-top gold-badge">Most Popular for Pilgrimage</div>
+          <div class="fleet-card-image-wrap">
+            <img src="assets/images/fleet/tempo-17-seater.png" alt="Tempo Traveller on Rent in Pune" class="fleet-card-img" loading="lazy">
+          </div>
+          <div class="fleet-card-body">
+            <div class="fleet-seating-pill">
+              <i class="fa-solid fa-user-group"></i> 14 & 17 Seater (2x1 Layout)
+            </div>
+            <h3 class="fleet-card-title">Luxury Tempo Traveller</h3>
+            <p class="fleet-card-desc">
+              The gold standard for family pilgrimage circuits, Ashtavinayak, and Shirdi tours. 2x1 pushback leatherette seating with dual high-cooling AC.
+            </p>
+            <div class="fleet-feature-tags">
+              <span><i class="fa-solid fa-snowflake"></i> Dual High AC</span>
+              <span><i class="fa-solid fa-tv"></i> LED Screen & Audio</span>
+              <span><i class="fa-solid fa-shield-halved"></i> Ghats Specialist</span>
+              <span><i class="fa-solid fa-boxes-stacked"></i> Roof Carrier</span>
+            </div>
+            <div class="fleet-card-footer">
+              <a href="https://wa.me/918446802069?text=Hi%20Anvisha%20Travels,%20I%20want%20to%20rent%20a%2017-Seater%20Tempo%20Traveller%20from%20Pune." target="_blank" class="btn-fleet-book">
+                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fleet Card 3: 32-Seater BharatBenz Coach -->
+        <div class="fleet-card">
+          <div class="fleet-badge-top">Air Suspension Ride</div>
+          <div class="fleet-card-image-wrap">
+            <img src="assets/images/fleet/bus-32-bharatbenz.png" alt="32 Seater BharatBenz Coach Rental Pune" class="fleet-card-img" loading="lazy">
+          </div>
+          <div class="fleet-card-body">
+            <div class="fleet-seating-pill">
+              <i class="fa-solid fa-user-group"></i> 32 Passengers (31+1)
+            </div>
+            <h3 class="fleet-card-title">BharatBenz Luxury Coach</h3>
+            <p class="fleet-card-desc">
+              Engineered for whisper-smooth highway transit with pneumatic air-suspension. Perfect for corporate team offsites and wedding party transfers.
+            </p>
+            <div class="fleet-feature-tags">
+              <span><i class="fa-solid fa-wind"></i> Air Suspension</span>
+              <span><i class="fa-solid fa-microphone"></i> PA System</span>
+              <span><i class="fa-solid fa-plug"></i> Mobile Charging</span>
+              <span><i class="fa-solid fa-door-open"></i> Underbelly Bays</span>
+            </div>
+            <div class="fleet-card-footer">
+              <a href="https://wa.me/918446802069?text=Hi%20Anvisha%20Travels,%20I%20want%20to%20hire%20a%2032-Seater%20BharatBenz%20Bus." target="_blank" class="btn-fleet-book">
+                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fleet Card 4: 40-Seater Deluxe Tourist Bus -->
+        <div class="fleet-card">
+          <div class="fleet-badge-top">Large Group Travel</div>
+          <div class="fleet-card-image-wrap">
+            <img src="assets/images/fleet/bus-40-seater.jpg" alt="40 Seater Deluxe Bus Pune" class="fleet-card-img" loading="lazy">
+          </div>
+          <div class="fleet-card-body">
+            <div class="fleet-seating-pill">
+              <i class="fa-solid fa-user-group"></i> 40 Passengers (40+1)
+            </div>
+            <h3 class="fleet-card-title">40-Seater Deluxe Bus</h3>
+            <p class="fleet-card-desc">
+              High-capacity luxury coach for large family weddings, school trips, and pilgrimage delegations across Maharashtra and Goa.
+            </p>
+            <div class="fleet-feature-tags">
+              <span><i class="fa-solid fa-snowflake"></i> High Output AC</span>
+              <span><i class="fa-solid fa-volume-high"></i> Stereo Audio</span>
+              <span><i class="fa-solid fa-suitcase"></i> Giant Boot</span>
+              <span><i class="fa-solid fa-shield-heart"></i> GPS Tracking</span>
+            </div>
+            <div class="fleet-card-footer">
+              <a href="https://wa.me/918446802069?text=Hi%20Anvisha%20Travels,%20I%20want%20to%20book%20a%2040-Seater%20Deluxe%20Bus." target="_blank" class="btn-fleet-book">
+                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fleet Card 5: Toyota Innova Crysta -->
+        <div class="fleet-card">
+          <div class="fleet-badge-top">VIP Chauffeur Cab</div>
+          <div class="fleet-card-image-wrap">
+            <img src="assets/images/fleet-car.jpg" alt="Innova Crysta Rental Pune" class="fleet-card-img" loading="lazy">
+          </div>
+          <div class="fleet-card-body">
+            <div class="fleet-seating-pill">
+              <i class="fa-solid fa-user-group"></i> 6+1 Passengers
+            </div>
+            <h3 class="fleet-card-title">Toyota Innova Crysta</h3>
+            <p class="fleet-card-desc">
+              Unmatched comfort for smaller family getaways, VIP darshan visits to Shirdi, and punctual Pune to Mumbai international airport transfers.
+            </p>
+            <div class="fleet-feature-tags">
+              <span><i class="fa-solid fa-star"></i> Captain Seats</span>
+              <span><i class="fa-solid fa-shield-halved"></i> 7 Airbags Safety</span>
+              <span><i class="fa-solid fa-plane-departure"></i> Airport Drop</span>
+              <span><i class="fa-solid fa-clock"></i> 24/7 Available</span>
+            </div>
+            <div class="fleet-card-footer">
+              <a href="https://wa.me/918446802069?text=Hi%20Anvisha%20Travels,%20I%20want%20to%20book%20an%20Innova%20Crysta%20from%20Pune." target="_blank" class="btn-fleet-book">
+                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        Maharashtra Destination Circuits: Horizontal Swipeable Carousels
        ========================================================================== -->
   <section class="destinations-section" id="destinationsSection">
@@ -1705,7 +1862,90 @@
     </div>
   </section>
 
+  <!-- ==========================================================================
+       Verified Guest Reviews & 5-Star Experience Section
+       ========================================================================== -->
+  <section class="reviews-section" id="reviewsSection">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-tag gold-tag"><i class="fa-solid fa-star"></i> Verified Pune Reviews</div>
+        <h2 class="section-title">Loved by Over <span class="gradient-text-gold">50,000+ Happy Guests</span></h2>
+        <p class="section-subtitle mx-auto">
+          Read genuine Google & WhatsApp feedback from families, corporate teams, and pilgrims who trust Anvisha Travels Pune.
+        </p>
+      </div>
 
+      <!-- Trust Rating Banner -->
+      <div class="reviews-rating-header">
+        <div class="rating-huge-score">4.9</div>
+        <div class="rating-stars-wrap">
+          <div class="stars-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="rating-count-text">Based on <strong>1,480+ verified Google reviews</strong> across Pune & PCMC</div>
+        </div>
+        <div class="rating-pills-row">
+          <span class="rating-check-pill"><i class="fa-solid fa-circle-check"></i> 100% Punctual Pickup</span>
+          <span class="rating-check-pill"><i class="fa-solid fa-circle-check"></i> Sanitized Fleet</span>
+          <span class="rating-check-pill"><i class="fa-solid fa-circle-check"></i> Verified Drivers</span>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <span class="review-trip-tag">🔱 5 Jyotirlinga Circuit (5 Days)</span>
+          </div>
+          <p class="review-text">
+            "Booked a 17-seater Tempo Traveller for our complete Maharashtra 5 Jyotirlinga tour starting from Kothrud, Pune. The vehicle was spotless, AC was crisp, and our driver was polite and skilled on the ghat routes. My elderly parents were comfortable throughout the 5 days. Highly recommend Anvisha Travels!"
+          </p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">RD</div>
+            <div>
+              <div class="reviewer-name">Rajesh & Sunita Deshmukh</div>
+              <div class="reviewer-loc"><i class="fa-solid fa-location-dot"></i> Kothrud, Pune • Family Pilgrimage</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <span class="review-trip-tag">⛰️ Corporate Offsite • Mahabaleshwar</span>
+          </div>
+          <p class="review-text">
+            "Organized our Hinjewadi IT company team outing to Mahabaleshwar. We chartered the 32-seater BharatBenz coach. The pneumatic air-suspension made the ghats feel like floating! Zero motion sickness, perfectly punctual pickup at Magarpatta and Hinjewadi, and transparent billing. Top-notch service."
+          </p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">SP</div>
+            <div>
+              <div class="reviewer-name">Sneha Patil (HR Operations)</div>
+              <div class="reviewer-loc"><i class="fa-solid fa-location-dot"></i> Viman Nagar, Pune • Corporate Event</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <span class="review-trip-tag">🐘 Ashtavinayak Darshan (2 Days)</span>
+          </div>
+          <p class="review-text">
+            "Booked the Force Urbania for our 12-member family Ashtavinayak Yatra. The aircraft-style luxury seats and panoramic windows made the long drive feel effortless. Booking over WhatsApp took less than 5 minutes with all details clearly explained. Anvisha Travels is now our permanent travel partner!"
+          </p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">AK</div>
+            <div>
+              <div class="reviewer-name">Amit & Priya Kulkarni</div>
+              <div class="reviewer-loc"><i class="fa-solid fa-location-dot"></i> Hadapsar, Pune • Family Pilgrimage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ==========================================================================
        Premium Amenities Showcase

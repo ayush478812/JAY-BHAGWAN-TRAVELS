@@ -229,21 +229,12 @@ function initUnifiedScroll() {
   const header = document.getElementById('mainHeader');
   const progressBar = document.getElementById('pageScrollProgress');
   const backToTopBtn = document.getElementById('backToTopBtn');
-  const heroContent = document.querySelector('.hero-header-center');
   const navMenu = document.getElementById('navMenu');
   const line = document.getElementById('navActiveLine');
   const navLinks = document.querySelectorAll('.nav-menu .nav-link');
   const drawerLinks = document.querySelectorAll('.drawer-menu-list .drawer-link');
 
-  const sectionConfig = [
-    { id: 'home', el: document.getElementById('home') },
-    { id: 'planTripSection', el: document.getElementById('planTripSection') },
-    { id: 'destinationsSection', el: document.getElementById('destinationsSection') },
-    { id: 'whyChooseSection', el: document.getElementById('whyChooseSection') },
-    { id: 'amenitiesSection', el: document.getElementById('amenitiesSection') },
-    { id: 'contactSection', el: document.getElementById('contactSection') }
-  ];
-  const sections = sectionConfig.filter(s => s.el !== null);
+  const sectionIds = ['home', 'planTripSection', 'fleetSection', 'destinationsSection', 'whyChooseSection', 'amenitiesSection', 'faqSection', 'contactSection'];
 
   let currentActiveId = 'home';
   let isHovering = false;
@@ -262,6 +253,7 @@ function initUnifiedScroll() {
   }
 
   function setActive(id) {
+    if (id === currentActiveId) return; // Prevent unnecessary DOM work on every frame
     currentActiveId = id;
 
     navLinks.forEach(link => {
@@ -300,12 +292,7 @@ function initUnifiedScroll() {
     });
   }
 
-  function getElementTop(el) {
-    const rect = el.getBoundingClientRect();
-    return rect.top + window.scrollY;
-  }
-
-  // Unified Single RAF Tick
+  // High performance RAF Scroll Tick
   let isTicking = false;
   function onScrollTick() {
     const scrollY = window.scrollY || document.documentElement.scrollTop;
@@ -339,29 +326,20 @@ function initUnifiedScroll() {
       }
     }
 
-    // 4. Parallax
-    if (heroContent && scrollY < windowHeight) {
-      heroContent.style.transform = `translateY(${scrollY * 0.12}px)`;
-      heroContent.style.opacity = `${Math.max(1 - (scrollY / (windowHeight * 0.75)), 0)}`;
-    }
-
-    // 5. Nav Scrollspy
-    const scrollPos = scrollY + 220;
+    // 4. Nav Scrollspy (Using fast offsetTop instead of getBoundingClientRect)
+    const scrollPos = scrollY + 200;
     if (scrollY + windowHeight >= docHeight - 80) {
       setActive('contactSection');
     } else if (scrollY < 120) {
       setActive('home');
     } else {
-      let activeSecId = 'home';
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sec = sections[i];
-        const top = getElementTop(sec.el);
-        if (scrollPos >= top) {
-          activeSecId = sec.id;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const secEl = document.getElementById(sectionIds[i]);
+        if (secEl && scrollPos >= secEl.offsetTop) {
+          setActive(sectionIds[i]);
           break;
         }
       }
-      setActive(activeSecId);
     }
   }
 
@@ -487,7 +465,7 @@ function initBackgroundAnimation() {
   let height = (canvas.height = window.innerHeight);
 
   const isMobile = width < 768;
-  const particleCount = isMobile ? 22 : 46;
+  const particleCount = isMobile ? 12 : 24;
 
   // Colors matched to Anvisha Travels Logo: Warm Gold, Sky Blue, Pure White
   const colors = [
@@ -599,8 +577,22 @@ function initBackgroundAnimation() {
   const streak = new FlightStreak();
 
   let isRunning = true;
+  let isScrolling = false;
+  let scrollPauseTimer = null;
+
+  window.addEventListener('scroll', () => {
+    isScrolling = true;
+    clearTimeout(scrollPauseTimer);
+    scrollPauseTimer = setTimeout(() => {
+      isScrolling = false;
+      if (isRunning) requestAnimationFrame(animate);
+    }, 120);
+  }, { passive: true });
+
   function animate() {
     if (!isRunning) return;
+    if (isScrolling) return; // Keep 100% frame rate dedicated to scrolling
+
     ctx.clearRect(0, 0, width, height);
 
     particles.forEach(p => {
