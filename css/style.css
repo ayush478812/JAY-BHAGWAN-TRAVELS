@@ -5488,18 +5488,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   FAQ Section Styles - Google Rich Snippet & Accordion UX
+   Luxury FAQ Accordion & VIP Concierge Card Styles (Satisfying, Rich & Beautiful)
    ========================================================================== */
 .faq-section {
-  padding: 90px 0 100px;
+  padding: 95px 0 105px;
   position: relative;
-  background: linear-gradient(180deg, rgba(3, 11, 28, 0.85) 0%, rgba(6, 17, 43, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(3, 8, 22, 0.95) 0%, rgba(6, 15, 38, 0.98) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .faq-accordion-container {
-  max-width: 920px;
+  max-width: 900px;
   margin: 45px auto 0;
   display: flex;
   flex-direction: column;
@@ -5507,80 +5507,122 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .faq-item {
-  background: rgba(10, 24, 56, 0.55);
-  border: 1px solid rgba(56, 189, 248, 0.12);
-  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(11, 24, 56, 0.7) 0%, rgba(6, 15, 36, 0.85) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 16px;
   overflow: hidden;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .faq-item:hover {
-  border-color: rgba(245, 173, 24, 0.35);
-  background: rgba(12, 29, 68, 0.75);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
-  transform: translateY(-1px);
+  border-color: rgba(245, 173, 24, 0.45);
+  background: linear-gradient(135deg, rgba(14, 30, 68, 0.85) 0%, rgba(8, 19, 44, 0.95) 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(245, 173, 24, 0.08);
+  transform: translateY(-2px);
 }
 
 .faq-item[open] {
-  border-color: rgba(245, 173, 24, 0.45);
-  background: rgba(12, 29, 68, 0.85);
-  box-shadow: 0 12px 32px rgba(245, 173, 24, 0.08);
+  border-color: rgba(245, 173, 24, 0.6);
+  background: linear-gradient(135deg, rgba(16, 34, 76, 0.9) 0%, rgba(9, 20, 48, 0.98) 100%);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 173, 24, 0.12);
 }
 
 .faq-question {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
+  padding: 18px 22px;
   cursor: pointer;
   list-style: none;
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #f1f5f9;
   user-select: none;
-  transition: color 0.2s ease;
+  gap: 16px;
 }
 
 .faq-question::-webkit-details-marker {
   display: none;
 }
 
-.faq-icon-inline {
+.faq-q-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.faq-q-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(245, 173, 24, 0.12);
+  border: 1px solid rgba(245, 173, 24, 0.3);
   color: #f5ad18;
-  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1rem;
-}
-
-.faq-chevron {
-  color: #94a3b8;
-  font-size: 0.9rem;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
-  margin-left: 16px;
   flex-shrink: 0;
+  transition: all 0.25s ease;
 }
 
-.faq-item[open] .faq-chevron {
+.faq-item:hover .faq-q-icon,
+.faq-item[open] .faq-q-icon {
+  background: rgba(245, 173, 24, 0.22);
+  border-color: #f5ad18;
+  color: #fed269;
+  box-shadow: 0 0 14px rgba(245, 173, 24, 0.3);
+}
+
+.faq-q-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #f8fafc;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.faq-item:hover .faq-q-title,
+.faq-item[open] .faq-q-title {
+  color: #ffffff;
+}
+
+.faq-toggle-pill {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.faq-item[open] .faq-toggle-pill {
   transform: rotate(180deg);
-  color: #f5ad18;
+  background: #f5ad18;
+  border-color: #f5ad18;
+  color: #030816;
+  box-shadow: 0 0 12px rgba(245, 173, 24, 0.4);
 }
 
 .faq-answer {
-  padding: 0 24px 22px 24px;
+  padding: 16px 24px 24px 77px;
   color: #cbd5e1;
   font-size: 0.95rem;
-  line-height: 1.7;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  padding-top: 16px;
-  animation: faqFadeSlideIn 0.25s ease-out;
+  line-height: 1.75;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  animation: faqSlideFadeIn 0.28s ease-out;
 }
 
-@keyframes faqFadeSlideIn {
+@keyframes faqSlideFadeIn {
   from {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
@@ -5588,65 +5630,193 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.faq-link {
-  color: #38bdf8;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.faq-link:hover {
-  color: #f5ad18;
-}
-
-.faq-list {
-  margin: 10px 0 0 16px;
-  padding: 0;
-  list-style-type: disc;
-}
-
-.faq-list li {
-  margin-bottom: 8px;
+.faq-answer p {
+  margin-bottom: 12px;
   color: #cbd5e1;
 }
 
-.faq-list li strong {
-  color: #f8fafc;
+.faq-answer p strong {
+  color: #ffffff;
 }
 
+.faq-answer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.faq-chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.faq-chip-btn.chip-whatsapp {
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  color: #25d366;
+}
+
+.faq-chip-btn.chip-whatsapp:hover {
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+  transform: translateY(-2px);
+}
+
+.faq-chip-btn.chip-call {
+  background: rgba(245, 173, 24, 0.12);
+  border: 1px solid rgba(245, 173, 24, 0.35);
+  color: #f5ad18;
+}
+
+.faq-chip-btn.chip-call:hover {
+  background: #f5ad18;
+  color: #030816;
+  box-shadow: 0 4px 14px rgba(245, 173, 24, 0.4);
+  transform: translateY(-2px);
+}
+
+.faq-luxury-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.faq-luxury-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.faq-luxury-list li i {
+  color: #f5ad18;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.faq-luxury-list li strong {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   FAQ Bottom Consultation Card (VIP Concierge Card)
+   -------------------------------------------------------------------------- */
 .faq-cta-box {
-  max-width: 920px;
+  max-width: 900px;
   margin: 50px auto 0;
-  background: linear-gradient(135deg, rgba(16, 37, 85, 0.75) 0%, rgba(9, 21, 51, 0.85) 100%);
-  border: 1px solid rgba(245, 173, 24, 0.25);
-  border-radius: 18px;
-  padding: 28px 36px;
+  background: linear-gradient(135deg, rgba(16, 36, 82, 0.9) 0%, rgba(8, 18, 44, 0.98) 100%);
+  border: 1px solid rgba(245, 173, 24, 0.35);
+  border-radius: 20px;
+  padding: 30px 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  gap: 30px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.45), 0 0 30px rgba(245, 173, 24, 0.08);
+}
+
+.faq-cta-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.faq-cta-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(245, 173, 24, 0.25) 0%, rgba(245, 173, 24, 0.08) 100%);
+  border: 1px solid rgba(245, 173, 24, 0.4);
+  color: #f5ad18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(245, 173, 24, 0.2);
 }
 
 .faq-cta-text h4 {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 6px;
+  line-height: 1.35;
 }
 
 .faq-cta-text p {
   color: #94a3b8;
   font-size: 0.9rem;
   margin: 0;
+  line-height: 1.5;
 }
 
-.faq-cta-buttons {
+.faq-cta-actions {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
   flex-shrink: 0;
+}
+
+.faq-btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 13px 22px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  white-space: nowrap;
+}
+
+.faq-btn-whatsapp:hover {
+  background: linear-gradient(135deg, #2ae972 0%, #179e8e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5);
+}
+
+.faq-btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #f5ad18 0%, #d97706 100%);
+  color: #030816 !important;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 13px 22px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 20px rgba(245, 173, 24, 0.3);
+  white-space: nowrap;
+}
+
+.faq-btn-call:hover {
+  background: linear-gradient(135deg, #fed269 0%, #f5ad18 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(245, 173, 24, 0.45);
 }
 
 @media (max-width: 768px) {
@@ -5654,199 +5824,44 @@ h1, h2, h3, h4, h5, h6 {
     padding: 60px 0 70px;
   }
   .faq-question {
-    font-size: 0.95rem;
-    padding: 16px 18px;
+    padding: 16px 16px;
+  }
+  .faq-q-left {
+    gap: 12px;
+  }
+  .faq-q-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 0.88rem;
+  }
+  .faq-q-title {
+    font-size: 0.96rem;
   }
   .faq-answer {
-    padding: 0 18px 18px 18px;
+    padding: 14px 18px 20px 18px;
     font-size: 0.88rem;
   }
   .faq-cta-box {
     flex-direction: column;
     text-align: center;
     padding: 24px 20px;
-    margin-top: 35px;
+    gap: 20px;
   }
-  .faq-cta-buttons {
+  .faq-cta-left {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+  .faq-cta-actions {
     width: 100%;
     flex-direction: column;
+    gap: 10px;
   }
-  .faq-cta-buttons .btn {
+  .faq-btn-whatsapp,
+  .faq-btn-call {
     width: 100%;
     justify-content: center;
   }
-}
-
-/* ==========================================================================
-   Premier Luxury Fleet Showcase Styles (Satisfying, High-End & 120 FPS)
-   ========================================================================== */
-.fleet-section {
-  padding: 85px 0 95px;
-  position: relative;
-  background: linear-gradient(180deg, rgba(3, 8, 22, 0.95) 0%, rgba(6, 16, 40, 0.98) 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.fleet-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 26px;
-  margin-top: 45px;
-}
-
-.fleet-card {
-  position: relative;
-  background: rgba(10, 24, 56, 0.65);
-  border: 1px solid rgba(56, 189, 248, 0.16);
-  border-radius: 18px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s, box-shadow 0.28s;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
-.fleet-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(245, 173, 24, 0.5);
-  box-shadow: 0 18px 40px rgba(245, 173, 24, 0.12), 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-.featured-fleet-card {
-  border-color: rgba(245, 173, 24, 0.4);
-}
-
-.fleet-badge-top {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 2;
-  background: rgba(3, 11, 28, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  color: #38bdf8;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  backdrop-filter: blur(8px);
-}
-
-.fleet-badge-top.gold-badge {
-  border-color: rgba(245, 173, 24, 0.5);
-  color: #f5ad18;
-  background: rgba(245, 173, 24, 0.12);
-}
-
-.fleet-card-image-wrap {
-  width: 100%;
-  height: 200px;
-  background: radial-gradient(circle at 50% 60%, rgba(20, 48, 105, 0.5) 0%, rgba(6, 14, 34, 0.95) 75%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.fleet-card-img {
-  max-width: 90%;
-  max-height: 85%;
-  object-fit: contain;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.65));
-}
-
-.fleet-card:hover .fleet-card-img {
-  transform: scale(1.06);
-}
-
-.fleet-card-body {
-  padding: 22px 22px 20px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.fleet-seating-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #f5ad18;
-  margin-bottom: 8px;
-}
-
-.fleet-card-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.22rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 8px;
-}
-
-.fleet-card-desc {
-  font-size: 0.88rem;
-  color: #94a3b8;
-  line-height: 1.55;
-  margin-bottom: 16px;
-  flex-grow: 1;
-}
-
-.fleet-feature-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 20px;
-}
-
-.fleet-feature-tags span {
-  font-size: 0.74rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 4px 8px;
-  border-radius: 6px;
-  color: #cbd5e1;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.fleet-feature-tags span i {
-  color: #38bdf8;
-  font-size: 0.72rem;
-}
-
-.fleet-card-footer {
-  margin-top: auto;
-}
-
-.btn-fleet-book {
-  width: 100%;
-  padding: 11px 16px;
-  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.88rem;
-  border-radius: 10px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  text-decoration: none;
-  transition: all 0.22s ease;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
-}
-
-.btn-fleet-book:hover {
-  background: linear-gradient(135deg, #2ae972 0%, #179e8e 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
 }
 
 /* ==========================================================================
@@ -6020,7 +6035,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-  .fleet-section,
   .reviews-section {
     padding: 60px 0 70px;
   }

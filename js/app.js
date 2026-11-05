@@ -234,7 +234,7 @@ function initUnifiedScroll() {
   const navLinks = document.querySelectorAll('.nav-menu .nav-link');
   const drawerLinks = document.querySelectorAll('.drawer-menu-list .drawer-link');
 
-  const sectionIds = ['home', 'planTripSection', 'fleetSection', 'destinationsSection', 'whyChooseSection', 'amenitiesSection', 'faqSection', 'contactSection'];
+  const sectionIds = ['home', 'planTripSection', 'destinationsSection', 'whyChooseSection', 'reviewsSection', 'amenitiesSection', 'faqSection', 'contactSection'];
 
   let currentActiveId = 'home';
   let isHovering = false;
