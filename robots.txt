@@ -23,3 +23,4 @@ Allow: /assets/images/
 
 # Sitemap Location for Google Search Console & Bing Webmaster
 Sitemap: https://www.anvishatravels.com/sitemap.xml
+
