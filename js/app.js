@@ -622,3 +622,71 @@ function initBackgroundAnimation() {
 
   requestAnimationFrame(animate);
 }
+
+/* ==========================================================================
+   CUSTOM LUXURY VEHICLE SELECT DROPDOWN CONTROLLER
+   ========================================================================== */
+function toggleVehicleDropdown(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  const menu = document.getElementById('vehicleOptionsList');
+  const arrow = document.getElementById('vehicleSelectArrow');
+  const trigger = document.getElementById('vehicleSelectTrigger');
+  if (!menu) return;
+
+  const isOpen = menu.classList.contains('show');
+  if (isOpen) {
+    closeVehicleDropdown();
+  } else {
+    menu.classList.add('show');
+    if (arrow) arrow.style.transform = 'rotate(180deg)';
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', 'true');
+      trigger.classList.add('active');
+    }
+  }
+}
+
+function closeVehicleDropdown() {
+  const menu = document.getElementById('vehicleOptionsList');
+  const arrow = document.getElementById('vehicleSelectArrow');
+  const trigger = document.getElementById('vehicleSelectTrigger');
+  if (menu && menu.classList.contains('show')) {
+    menu.classList.remove('show');
+    if (arrow) arrow.style.transform = 'rotate(0deg)';
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.classList.remove('active');
+    }
+  }
+}
+
+function selectVehicleOption(val, displayHtml, optionEl) {
+  const hiddenSelect = document.getElementById('heroVehicleChoice');
+  const triggerText = document.getElementById('vehicleSelectText');
+  const menu = document.getElementById('vehicleOptionsList');
+
+  if (hiddenSelect) {
+    hiddenSelect.value = val;
+    hiddenSelect.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+  if (triggerText) {
+    triggerText.innerHTML = displayHtml;
+  }
+  if (menu) {
+    menu.querySelectorAll('.custom-option').forEach(opt => opt.classList.remove('selected'));
+    if (optionEl) optionEl.classList.add('selected');
+  }
+  closeVehicleDropdown();
+}
+
+// Global click outside to close custom vehicle dropdown
+document.addEventListener('click', (e) => {
+  const card = document.getElementById('vehicleDropdownCard');
+  if (card && !card.contains(e.target)) {
+    closeVehicleDropdown();
+  }
+});
+

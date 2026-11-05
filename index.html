@@ -500,11 +500,122 @@
               </div>
             </div>
 
-            <!-- Preferred Vehicle -->
-            <div class="form-field-card console-field-vehicle">
+            <!-- Preferred Vehicle (Custom Luxury Dropdown) -->
+            <div class="form-field-card console-field-vehicle" id="vehicleDropdownCard">
               <span class="field-label"><i class="fa-solid fa-bus-simple"></i> Choose Your Vehicle</span>
-              <div class="field-input-wrap">
-                <select id="heroVehicleChoice" class="field-select">
+              <div class="field-input-wrap custom-select-container">
+                <button type="button" class="custom-select-trigger" id="vehicleSelectTrigger" aria-haspopup="listbox" aria-expanded="false" onclick="toggleVehicleDropdown(event)">
+                  <span class="selected-text" id="vehicleSelectText">
+                    <i class="fa-solid fa-van-shuttle text-gold" style="margin-right: 8px;"></i> 17-Seater Tempo Traveller (16+1)
+                  </span>
+                  <i class="fa-solid fa-chevron-down select-chevron" id="vehicleSelectArrow"></i>
+                </button>
+
+                <div class="custom-select-menu" id="vehicleOptionsList" role="listbox">
+                  <div class="custom-option selected" data-value="17-Seater Tempo Traveller (16+1)" onclick="selectVehicleOption('17-Seater Tempo Traveller (16+1)', '<i class=\'fa-solid fa-van-shuttle text-gold\' style=\'margin-right: 8px;\'></i> 17-Seater Tempo Traveller (16+1)', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-van-shuttle opt-icon icon-gold"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">17-Seater Tempo Traveller (16+1)</span>
+                        <span class="opt-badge">Most Popular • Pushback AC</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                  <div class="custom-option" data-value="17-Seater Urbania Bus (16+1)" onclick="selectVehicleOption('17-Seater Urbania Bus (16+1)', '<i class=\'fa-solid fa-van-shuttle text-cyan\' style=\'margin-right: 8px;\'></i> 17-Seater Urbania Bus (16+1)', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-van-shuttle opt-icon icon-cyan"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">17-Seater Urbania Bus (16+1)</span>
+                        <span class="opt-badge">Ultra Luxury • Recliner Captain Seats</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                  <div class="custom-option" data-value="13-Seater Urbania Bus (12+1)" onclick="selectVehicleOption('13-Seater Urbania Bus (12+1)', '<i class=\'fa-solid fa-van-shuttle text-cyan\' style=\'margin-right: 8px;\'></i> 13-Seater Urbania Bus (12+1)', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-van-shuttle opt-icon icon-cyan"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">13-Seater Urbania Bus (12+1)</span>
+                        <span class="opt-badge">VIP Executive • Panoramic Windows</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                  <div class="custom-option" data-value="14-Seater Tempo Traveller (13+1)" onclick="selectVehicleOption('14-Seater Tempo Traveller (13+1)', '<i class=\'fa-solid fa-van-shuttle text-gold\' style=\'margin-right: 8px;\'></i> 14-Seater Tempo Traveller (13+1)', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-van-shuttle opt-icon icon-gold"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">14-Seater Tempo Traveller (13+1)</span>
+                        <span class="opt-badge">Family Groups • High Cooling AC</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                  <div class="custom-option" data-value="32-Seater Tourist Bus (31+1)" onclick="selectVehicleOption('32-Seater Tourist Bus (31+1)', '<i class=\'fa-solid fa-bus-simple text-blue\' style=\'margin-right: 8px;\'></i> 32-Seater Tourist Bus (31+1)', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-bus-simple opt-icon icon-blue"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">32-Seater Tourist Bus (31+1)</span>
+                        <span class="opt-badge">Deluxe Coach • Large Baggage Bays</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                  <div class="custom-option" data-value="32-Seater BharatBenz Coach (31+1)" onclick="selectVehicleOption('32-Seater BharatBenz Coach (31+1)', '<i class=\'fa-solid fa-bus text-gold\' style=\'margin-right: 8px;\'></i> 32-Seater BharatBenz Coach (31+1)', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-bus opt-icon icon-gold"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">32-Seater BharatBenz Coach (31+1)</span>
+                        <span class="opt-badge">Air Suspension • Corporate & Offsite</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                  <div class="custom-option" data-value="35-Seater Bus (34+1)" onclick="selectVehicleOption('35-Seater Bus (34+1)', '<i class=\'fa-solid fa-bus-simple text-blue\' style=\'margin-right: 8px;\'></i> 35-Seater Bus (34+1)', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-bus-simple opt-icon icon-blue"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">35-Seater Bus (34+1)</span>
+                        <span class="opt-badge">Tour Coach • Stereo Sound System</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                  <div class="custom-option" data-value="40-Seater Deluxe Bus (40+1)" onclick="selectVehicleOption('40-Seater Deluxe Bus (40+1)', '<i class=\'fa-solid fa-bus text-blue\' style=\'margin-right: 8px;\'></i> 40-Seater Deluxe Bus (40+1)', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-bus opt-icon icon-blue"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">40-Seater Deluxe Bus (40+1)</span>
+                        <span class="opt-badge">Wedding & Big Pilgrimage Delegations</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                  <div class="custom-option" data-value="Volvo 9600 Luxury Sleeper" onclick="selectVehicleOption('Volvo 9600 Luxury Sleeper', '<i class=\'fa-solid fa-bed text-gold\' style=\'margin-right: 8px;\'></i> Volvo 9600 Luxury Sleeper', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-bed opt-icon icon-gold"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">Volvo 9600 Luxury Sleeper</span>
+                        <span class="opt-badge">Interstate Sleeper • Premium Berths</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                  <div class="custom-option" data-value="Toyota Innova Crysta (6+1)" onclick="selectVehicleOption('Toyota Innova Crysta (6+1)', '<i class=\'fa-solid fa-car-side text-cyan\' style=\'margin-right: 8px;\'></i> Toyota Innova Crysta (6+1)', this)">
+                    <div class="option-content">
+                      <i class="fa-solid fa-car-side opt-icon icon-cyan"></i>
+                      <div class="opt-text-wrap">
+                        <span class="opt-name">Toyota Innova Crysta (6+1)</span>
+                        <span class="opt-badge">VIP Family Cab • Airport Transfers</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-check opt-check"></i>
+                  </div>
+                </div>
+
+                <!-- Hidden native select for full form & script compatibility -->
+                <select id="heroVehicleChoice" class="field-select" style="display: none;" tabindex="-1" aria-hidden="true">
                   <option value="17-Seater Tempo Traveller (16+1)" selected>17-Seater Tempo Traveller (16+1)</option>
                   <option value="17-Seater Urbania Bus (16+1)">17-Seater Urbania Bus (16+1)</option>
                   <option value="13-Seater Urbania Bus (12+1)">13-Seater Urbania Bus (12+1)</option>
