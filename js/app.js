@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initUnifiedScroll();
   initScrollReveal();
   initAnimatedCounters();
-  initShowMore();
 });
 
 /* --------------------------------------------------------------------------
@@ -84,156 +83,43 @@ function quickFillPlace(placeName) {
 }
 
 /* --------------------------------------------------------------------------
-   Show More / Show Less - Destination Cards Pagination
+   Horizontal Swipeable Destination Carousels
    -------------------------------------------------------------------------- */
-function initShowMore() {
-  applyShowMore();
+function scrollCarousel(trackId, direction) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+  const card = track.querySelector('.carousel-card');
+  const cardWidth = card ? card.offsetWidth : 310;
+  const scrollDistance = (cardWidth + 20) * 2 * direction;
+  track.scrollBy({ left: scrollDistance, behavior: 'smooth' });
 }
 
-function getVisibleCards() {
-  const allCards = document.querySelectorAll('#destinationsGrid .destination-card');
-  const visible = [];
-  allCards.forEach(card => {
-    const cardState = card.getAttribute('data-state');
-    if (activeFilter === 'all' || cardState === activeFilter) {
-      visible.push(card);
-    }
-  });
-  return visible;
-}
-
-function applyShowMore() {
-  const matchingCards = getVisibleCards();
-  const totalMatching = matchingCards.length;
-  const showMoreWrap = document.getElementById('showMoreWrap');
-  const btnShowMore = document.getElementById('btnShowMore');
-
-  // Hide all cards first
-  const allCards = document.querySelectorAll('#destinationsGrid .destination-card');
-  allCards.forEach(card => {
-    card.style.display = 'none';
-    card.classList.remove('card-fade-in');
-  });
-
-  // Show cards up to current limit
-  const limit = isShowingAll ? totalMatching : Math.min(currentVisibleCount, totalMatching);
-  let stagger = 0;
-  matchingCards.forEach((card, index) => {
-    if (index < limit) {
-      card.style.display = 'flex';
-      card.classList.remove('card-fade-in');
-      void card.offsetWidth;
-      card.classList.add('card-fade-in');
-      card.style.animationDelay = `${Math.min(stagger * 0.04, 0.35)}s`;
-      stagger++;
-    }
-  });
-
-  // Update Show More button state
-  if (showMoreWrap && btnShowMore) {
-    if (totalMatching <= CARDS_PER_PAGE) {
-      showMoreWrap.style.display = 'none';
-    } else if (isShowingAll || limit >= totalMatching) {
-      showMoreWrap.style.display = 'flex';
-      btnShowMore.innerHTML = '<span class="show-more-text"><i class="fa-solid fa-chevron-up"></i> Show Less</span>';
-      btnShowMore.classList.add('showing-less');
-    } else {
-      const remaining = totalMatching - limit;
-      showMoreWrap.style.display = 'flex';
-      btnShowMore.innerHTML = `<span class="show-more-text"><i class="fa-solid fa-chevron-down"></i> Show More Destinations</span><span class="show-more-count">${remaining} more</span>`;
-      btnShowMore.classList.remove('showing-less');
-    }
-  }
-}
-
-function toggleShowMore() {
-  const matchingCards = getVisibleCards();
-  const totalMatching = matchingCards.length;
-
-  if (isShowingAll || currentVisibleCount >= totalMatching) {
-    isShowingAll = false;
-    currentVisibleCount = CARDS_PER_PAGE;
-    applyShowMore();
-    const destSection = document.getElementById('destinationsSection');
-    if (destSection) {
-      setTimeout(() => {
-        destSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
-    }
-  } else {
-    currentVisibleCount += CARDS_PER_PAGE;
-    if (currentVisibleCount >= totalMatching) {
-      isShowingAll = true;
-    }
-    applyShowMore();
-  }
-}
-
-/* --------------------------------------------------------------------------
-   State Tabs Filter (Interactive Categories & Famous Places)
-   -------------------------------------------------------------------------- */
-function filterState(stateKey, clickedBtn) {
-  const searchInput = document.getElementById('placeSearchInput');
-  if (searchInput) searchInput.value = '';
-
-  activeFilter = stateKey;
-  currentVisibleCount = CARDS_PER_PAGE;
-  isShowingAll = false;
-
-  const buttons = document.querySelectorAll('.state-filter-nav .btn-state-tab');
-  buttons.forEach(btn => btn.classList.remove('active'));
-  const activeBtn = clickedBtn || (window.event && window.event.currentTarget);
-  if (activeBtn) {
-    activeBtn.classList.add('active');
-    if (activeBtn.scrollIntoView) {
-      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
-  }
-
-  applyShowMore();
-}
-
-/* --------------------------------------------------------------------------
-   Live Instant Search Across All Places & Monuments
-   -------------------------------------------------------------------------- */
-function searchPlacesLive() {
+function filterCarouselPlaces() {
   const input = document.getElementById('placeSearchInput');
   const query = input ? input.value.trim().toLowerCase() : '';
-  const cards = document.querySelectorAll('#destinationsGrid .destination-card');
-  const showMoreWrap = document.getElementById('showMoreWrap');
+  const blocks = document.querySelectorAll('.carousel-category-block');
 
-  if (query) {
-    if (showMoreWrap) showMoreWrap.style.display = 'none';
-
-    let stagger = 0;
+  blocks.forEach(block => {
+    let hasVisibleCard = false;
+    const cards = block.querySelectorAll('.carousel-card');
     cards.forEach(card => {
       const name = (card.getAttribute('data-name') || '').toLowerCase();
-      const title = (card.querySelector('.destination-title')?.innerText || '').toLowerCase();
-      const desc = (card.querySelector('.destination-desc')?.innerText || '').toLowerCase();
-      const state = (card.getAttribute('data-state') || '').toLowerCase();
-
-      if (name.includes(query) || title.includes(query) || desc.includes(query) || state.includes(query)) {
+      const title = (card.querySelector('.carousel-card-title')?.innerText || '').toLowerCase();
+      const desc = (card.querySelector('.carousel-card-desc')?.innerText || '').toLowerCase();
+      if (!query || name.includes(query) || title.includes(query) || desc.includes(query)) {
         card.style.display = 'flex';
-        card.classList.remove('card-fade-in');
-        void card.offsetWidth;
-        card.classList.add('card-fade-in');
-        card.style.animationDelay = `${Math.min(stagger * 0.04, 0.3)}s`;
-        stagger++;
+        hasVisibleCard = true;
       } else {
         card.style.display = 'none';
-        card.classList.remove('card-fade-in');
       }
     });
 
-    document.querySelectorAll('.state-filter-nav .btn-state-tab').forEach(b => b.classList.remove('active'));
-  } else {
-    const allBtn = document.querySelector('.state-filter-nav .btn-state-tab');
-    if (allBtn) allBtn.classList.add('active');
-    activeFilter = 'all';
-    currentVisibleCount = CARDS_PER_PAGE;
-    isShowingAll = false;
-    applyShowMore();
-  }
+    if (query && !hasVisibleCard) {
+      block.style.display = 'none';
+    } else {
+      block.style.display = 'block';
+    }
+  });
 }
 
 /* --------------------------------------------------------------------------

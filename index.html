@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=17.0">
+  <link rel="stylesheet" href="css/style.css?v=18.0">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -222,7 +222,7 @@
           <div class="console-row-route">
             <!-- Leaving From -->
             <div class="form-field-card console-field-from">
-              <span class="field-label"><i class="fa-solid fa-location-dot"></i> Leaving From (City)</span>
+              <span class="field-label"><i class="fa-solid fa-location-dot"></i> Pick up location </span>
               <div class="field-input-wrap">
                 <input type="text" id="heroFromCity" class="field-input" placeholder="e.g. Pune, Mumbai, Nashik"
                   value="Pune" required list="majorCitiesList">
@@ -436,1237 +436,975 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       Explore Maharashtra: Famous Places, Shrines, Forts & Beaches
+    <!-- ==========================================================================
+       Maharashtra Destination Circuits: Horizontal Swipeable Carousels
        ========================================================================== -->
   <section class="destinations-section" id="destinationsSection">
-    <div class="container">
-      <div class="text-center section-header-destinations reveal-on-scroll">
-        <div class="section-tag gold-tag"><i class="fa-solid fa-map-location-dot"></i> 44 Iconic Maharashtra Landmarks
-        </div>
-        <h2 class="section-title">Explore Famous Places In <span class="gradient-text-gold">Maharashtra</span></h2>
-        <p class="section-subtitle mx-auto">
-          Browse Maharashtra's most celebrated 5 holy Jyotirlingas, Ashtavinayak temples, Sahyadri hill stations, royal
-          Maratha forts, UNESCO wonders, and pristine Konkan beaches. Click 'Book on WhatsApp' for instant rates and
-          confirmed luxury coaches from Pune Head Office!
+    <div class="destinations-container">
+
+      <!-- Section Header (Clean, Corporate & Professional) -->
+      <div class="destinations-header-modern reveal-on-scroll">
+        <div class="modern-badge">POPULAR MAHARASHTRA CIRCUITS</div>
+        <h2 class="modern-section-title">Explore Iconic Destinations with <span class="gradient-text-gold">Anvisha Travels</span></h2>
+        <p class="modern-section-sub">
+          Daily departures from Pune Head Office in luxury Force Urbania, Tempo Travellers, and tourist coaches. Swipe or browse any category to view landmarks and book direct on WhatsApp.
         </p>
 
-        <!-- Search input for places -->
-        <div class="search-places-bar-wrap">
+        <!-- Fast Landmark Filter / Quick Jump Search -->
+        <div class="carousel-search-bar">
           <i class="fa-solid fa-magnifying-glass search-bar-icon"></i>
-          <input type="text" id="placeSearchInput" onkeyup="searchPlacesLive()"
-            placeholder="Search any Maharashtra temple, hill station, fort, or beach (e.g. Shirdi, Trimbakeshwar, Mahabaleshwar, Raigad, Kaas, Lonar...)"
-            class="search-places-input">
+          <input type="text" id="placeSearchInput" onkeyup="filterCarouselPlaces()" placeholder="Search any Maharashtra temple, hill station, fort, or beach..." class="search-places-input">
         </div>
       </div>
 
-      <!-- Maharashtra Categories Filter Nav Tabs -->
-      <div class="state-filter-nav">
-        <button class="btn-state-tab active" onclick="filterState('all', this)">
-          <i class="fa-solid fa-map"></i> All Maharashtra (44)
-        </button>
-        <button class="btn-state-tab" onclick="filterState('jyotirlinga', this)">
-          🛕 5 Jyotirlingas (5)
-        </button>
-        <button class="btn-state-tab" onclick="filterState('pilgrimage', this)">
-          🚩 Sacred Pilgrimages (9)
-        </button>
-        <button class="btn-state-tab" onclick="filterState('hillstation', this)">
-          ⛰️ Sahyadri Hills & Peaks (9)
-        </button>
-        <button class="btn-state-tab" onclick="filterState('forts', this)">
-          🏰 Royal Forts & UNESCO (10)
-        </button>
-        <button class="btn-state-tab" onclick="filterState('beaches', this)">
-          🌴 Konkan Beaches & Forts (7)
-        </button>
-        <button class="btn-state-tab" onclick="filterState('city', this)">
-          🏙️ City, Wonders & Safari (4)
-        </button>
-      </div>
-
-      <!-- Destinations Cards Grid -->
-      <div class="destinations-grid" id="destinationsGrid">
-        <div class="destination-card" data-state="jyotirlinga"
-          data-name="trimbakeshwar jyotirlinga nashik godavari brahmagiri kushavarta">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/trimbakeshwar.jpg" alt="Trimbakeshwar Jyotirlinga, Nashik"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🛕 Jyotirlinga • Nashik</span>
+      <!-- Category Block: Sacred 5 Jyotirlingas & Holy Shrines -->
+      <div class="carousel-category-block reveal-on-scroll">
+        <div class="carousel-row-header">
+          <div class="carousel-row-title-wrap">
+            <h3 class="carousel-row-title">
+              <i class="fa-solid fa-om"></i> Sacred 5 Jyotirlingas & Holy Shrines <span class="carousel-count-pill">14 Destinations</span>
+            </h3>
+            <span class="carousel-row-subtitle">Complete darshan circuits with verified route chauffeurs</span>
           </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Trimbakeshwar Jyotirlinga, Nashik</h3>
-            <p class="destination-desc">One of the most sacred of the 12 Jyotirlingas, where Lord Shiva resides as a
+          <div class="carousel-nav-arrows">
+            <button class="carousel-arrow prev" onclick="scrollCarousel('trackJyotirlinga', -1)" aria-label="Previous Destinations">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="carousel-arrow next" onclick="scrollCarousel('trackJyotirlinga', 1)" aria-label="Next Destinations">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="carousel-track" id="trackJyotirlinga">
+          <div class="carousel-card" data-name="trimbakeshwar jyotirlinga nashik godavari brahmagiri kushavarta">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/trimbakeshwar.jpg" alt="Trimbakeshwar Jyotirlinga, Nashik" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Jyotirlinga • Nashik</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Trimbakeshwar Jyotirlinga, Nashik">Trimbakeshwar Jyotirlinga, Nashik</h4>
+              <p class="carousel-card-desc">One of the most sacred of the 12 Jyotirlingas, where Lord Shiva resides as a
               three-faced linga representing Brahma, Vishnu, and Mahesh at the origin of the holy Godavari River.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Three-Faced Tridev Jyotirlinga</span>
-              <span class="destination-highlight-pill">Origin of Godavari River</span>
-              <span class="destination-highlight-pill">Holy Kushavarta Kund Snan</span>
-              <span class="destination-highlight-pill">Brahmagiri Mountain Trek</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Trimbakeshwar Jyotirlinga, Nashik', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Three-Faced Tridev Jyotirlinga">
+                  <i class="fa-solid fa-location-dot"></i> Three-Faced Tridev Jyotirlinga
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Trimbakeshwar Jyotirlinga, Nashik', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="jyotirlinga"
-          data-name="bhimashankar jyotirlinga pune sahyadri wildlife sanctuary khed">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/bhimashankar.jpg" alt="Bhimashankar Jyotirlinga Temple, Pune"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🛕 Jyotirlinga • Pune</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Bhimashankar Jyotirlinga, Pune Sahyadri</h3>
-            <p class="destination-desc">Set amidst the lush mist-covered Sahyadri mountain range in Pune district, this
+          <div class="carousel-card" data-name="bhimashankar jyotirlinga pune sahyadri wildlife sanctuary khed">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/bhimashankar.jpg" alt="Bhimashankar Jyotirlinga Temple, Pune" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Jyotirlinga • Pune</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Bhimashankar Jyotirlinga, Pune Sahyadri">Bhimashankar Jyotirlinga, Pune Sahyadri</h4>
+              <p class="carousel-card-desc">Set amidst the lush mist-covered Sahyadri mountain range in Pune district, this
               Jyotirlinga temple features exquisite Nagara style architecture and is the origin of the Bhima River.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Ancient Nagara Style Garbhagriha</span>
-              <span class="destination-highlight-pill">Bhimashankar Wildlife Sanctuary</span>
-              <span class="destination-highlight-pill">Source of Holy Bhima River</span>
-              <span class="destination-highlight-pill">Shekru Giant Squirrel Habitat</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Bhimashankar Jyotirlinga, Pune Sahyadri', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Ancient Nagara Style Garbhagriha">
+                  <i class="fa-solid fa-location-dot"></i> Ancient Nagara Style Garbhagriha
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Bhimashankar Jyotirlinga, Pune Sahyadri', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="jyotirlinga"
-          data-name="grishneshwar jyotirlinga aurangabad ellora caves sambhajinagar verul">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/grishneshwar.jpg" alt="Grishneshwar Jyotirlinga, Verul"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🛕 Jyotirlinga • Sambhajinagar</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Grishneshwar Jyotirlinga & Ellora Caves</h3>
-            <p class="destination-desc">The 12th and final Jyotirlinga mentioned in the Shiva Purana, built from red
+          <div class="carousel-card" data-name="grishneshwar jyotirlinga aurangabad ellora caves sambhajinagar verul">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/grishneshwar.jpg" alt="Grishneshwar Jyotirlinga, Verul" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Jyotirlinga • Sambhajinagar</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Grishneshwar Jyotirlinga & Ellora Caves">Grishneshwar Jyotirlinga & Ellora Caves</h4>
+              <p class="carousel-card-desc">The 12th and final Jyotirlinga mentioned in the Shiva Purana, built from red
               basalt stone by Ahilyabai Holkar, situated just 1 km from the world-famous UNESCO Ellora Caves.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">12th Jyotirlinga of Shiva Purana</span>
-              <span class="destination-highlight-pill">Red Basalt Carved Architecture</span>
-              <span class="destination-highlight-pill">Ahilyabai Holkar Rebuilt Temple</span>
-              <span class="destination-highlight-pill">1 Km from Ellora Caves</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Grishneshwar Jyotirlinga & Ellora Caves', '32-Seater BharatBenz Coach')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="12th Jyotirlinga of Shiva Purana">
+                  <i class="fa-solid fa-location-dot"></i> 12th Jyotirlinga of Shiva Purana
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Grishneshwar Jyotirlinga & Ellora Caves', '32-Seater BharatBenz Coach')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="jyotirlinga"
-          data-name="parli vaijnath jyotirlinga beed marathwada vaidyath">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/parli-vaijnath.jpg" alt="Parli Vaijnath Jyotirlinga, Beed"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🛕 Jyotirlinga • Beed</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Parli Vaijnath Jyotirlinga, Beed</h3>
-            <p class="destination-desc">Perched on a small hill in Marathwada, this revered Jyotirlinga is worshipped as
+          <div class="carousel-card" data-name="parli vaijnath jyotirlinga beed marathwada vaidyath">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/parli-vaijnath.jpg" alt="Parli Vaijnath Jyotirlinga, Beed" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Jyotirlinga • Beed</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Parli Vaijnath Jyotirlinga, Beed">Parli Vaijnath Jyotirlinga, Beed</h4>
+              <p class="carousel-card-desc">Perched on a small hill in Marathwada, this revered Jyotirlinga is worshipped as
               Vaidyanath (the lord of healing and physicians), surrounded by sacred medicinal spring waters.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Lord of Divine Healing & Health</span>
-              <span class="destination-highlight-pill">Punya Shloka Ahilyabai Mandir</span>
-              <span class="destination-highlight-pill">Harihara Amrit Kund Water</span>
-              <span class="destination-highlight-pill">Great Maratha Spiritual Center</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Parli Vaijnath Jyotirlinga, Beed', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Lord of Divine Healing & Health">
+                  <i class="fa-solid fa-location-dot"></i> Lord of Divine Healing & Health
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Parli Vaijnath Jyotirlinga, Beed', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="jyotirlinga"
-          data-name="aundha nagnath jyotirlinga hingoli 8th jyotirlinga namdev saint">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/aundha-nagnath.jpg" alt="Aundha Nagnath Jyotirlinga, Hingoli"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🛕 Jyotirlinga • Hingoli</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Aundha Nagnath Jyotirlinga, Hingoli</h3>
-            <p class="destination-desc">Believed to be established by the eldest Pandava Yudhishthira, this 8th
+          <div class="carousel-card" data-name="aundha nagnath jyotirlinga hingoli 8th jyotirlinga namdev saint">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/aundha-nagnath.jpg" alt="Aundha Nagnath Jyotirlinga, Hingoli" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Jyotirlinga • Hingoli</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Aundha Nagnath Jyotirlinga, Hingoli">Aundha Nagnath Jyotirlinga, Hingoli</h4>
+              <p class="carousel-card-desc">Believed to be established by the eldest Pandava Yudhishthira, this 8th
               Jyotirlinga has profound Hemadpanthi rock carvings and is immortalized by Saint Namdev.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Established by Pandava Yudhishthira</span>
-              <span class="destination-highlight-pill">Underground Garbhagriha Shivling</span>
-              <span class="destination-highlight-pill">Sant Namdev Miracle Legend</span>
-              <span class="destination-highlight-pill">Intricate Hemadpanthi Stone Sculptures</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Aundha Nagnath Jyotirlinga, Hingoli', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Established by Pandava Yudhishthira">
+                  <i class="fa-solid fa-location-dot"></i> Established by Pandava Yudhishthira
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Aundha Nagnath Jyotirlinga, Hingoli', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="pilgrimage"
-          data-name="shirdi sai baba samadhi mandir dwarkamai chavadi ahmednagar">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/shirdi-temple.jpg" alt="Shirdi Sai Baba Samadhi Mandir"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🚩 Pilgrimage • Ahmednagar</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Shirdi Sai Baba Samadhi Mandir</h3>
-            <p class="destination-desc">World-renowned holy pilgrimage town where Sadguru Sai Baba taught love,
+          <div class="carousel-card" data-name="shirdi sai baba samadhi mandir dwarkamai chavadi ahmednagar">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/shirdi-temple.jpg" alt="Shirdi Sai Baba Samadhi Mandir" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Pilgrimage • Ahmednagar</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Shirdi Sai Baba Samadhi Mandir">Shirdi Sai Baba Samadhi Mandir</h4>
+              <p class="carousel-card-desc">World-renowned holy pilgrimage town where Sadguru Sai Baba taught love,
               tolerance, and "Sabka Malik Ek". Millions gather for the divine Kakad, Madhyan, and Dhoop Aartis.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Sai Baba Gold Samadhi Mandir</span>
-              <span class="destination-highlight-pill">Sacred Dwarkamai Dhuni</span>
-              <span class="destination-highlight-pill">Historical Chavadi & Gurusthan</span>
-              <span class="destination-highlight-pill">24/7 Prasadalaya & VIP Darshan</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Shirdi Sai Baba Samadhi Mandir', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Sai Baba Gold Samadhi Mandir">
+                  <i class="fa-solid fa-location-dot"></i> Sai Baba Gold Samadhi Mandir
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Shirdi Sai Baba Samadhi Mandir', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="pilgrimage"
-          data-name="ashtavinayak 8 ganpati morgaon theur lonavala ozar lenyadri mahad pali siddhatek">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/ashtavinayak.jpg" alt="Ashtavinayak 8 Ganpatis of Maharashtra"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🚩 Pilgrimage • Maharashtra</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Ashtavinayak 8 Ganpati Sacred Circuit Tour</h3>
-            <p class="destination-desc">The complete eight swayambhu (self-manifested) Ganesha temples in Maharashtra:
+          <div class="carousel-card" data-name="ashtavinayak 8 ganpati morgaon theur lonavala ozar lenyadri mahad pali siddhatek">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/ashtavinayak.jpg" alt="Ashtavinayak 8 Ganpatis of Maharashtra" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Pilgrimage • Maharashtra</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Ashtavinayak 8 Ganpati Sacred Circuit Tour">Ashtavinayak 8 Ganpati Sacred Circuit Tour</h4>
+              <p class="carousel-card-desc">The complete eight swayambhu (self-manifested) Ganesha temples in Maharashtra:
               Mayureshwar, Siddhivinayak, Ballaleshwar, Varadvinayak, Chintamani, Girijatmaj, Vighnahar, and
               Mahaganapati.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">All 8 Swayambhu Ganesha Shrines</span>
-              <span class="destination-highlight-pill">Lenyadri Rock-Cut Mountain Cave</span>
-              <span class="destination-highlight-pill">Complete 3-Day Pune Circuit</span>
-              <span class="destination-highlight-pill">Traditional Maharashtrian Hospitality</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Ashtavinayak 8 Ganpati Sacred Circuit Tour', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="All 8 Swayambhu Ganesha Shrines">
+                  <i class="fa-solid fa-location-dot"></i> All 8 Swayambhu Ganesha Shrines
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Ashtavinayak 8 Ganpati Sacred Circuit Tour', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="pilgrimage"
-          data-name="pandharpur vitthal rukmini mandir varkari chandrabhaga solapur ashadi ekadashi">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/pandharpur-vitthal.jpg" alt="Pandharpur Vitthal Rukmini Mandir"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🚩 Pilgrimage • Solapur</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Pandharpur Vitthal Rukmini Mandir</h3>
-            <p class="destination-desc">The spiritual heart of Maharashtra on the banks of holy Chandrabhaga River,
+          <div class="carousel-card" data-name="pandharpur vitthal rukmini mandir varkari chandrabhaga solapur ashadi ekadashi">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/pandharpur-vitthal.jpg" alt="Pandharpur Vitthal Rukmini Mandir" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Pilgrimage • Solapur</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Pandharpur Vitthal Rukmini Mandir">Pandharpur Vitthal Rukmini Mandir</h4>
+              <p class="carousel-card-desc">The spiritual heart of Maharashtra on the banks of holy Chandrabhaga River,
               where Lord Vitthal and Rakhumai are worshipped with unparalleled devotion by millions of Varkaris.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Lord Vitthal & Rakhumai Darshan</span>
-              <span class="destination-highlight-pill">Holy Chandrabhaga River Snan</span>
-              <span class="destination-highlight-pill">Pundalik Temple Riverbank</span>
-              <span class="destination-highlight-pill">Epicenter of Maharashtra Bhakti Movement</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Pandharpur Vitthal Rukmini Mandir', '32-Seater Tourist Coach')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Lord Vitthal & Rakhumai Darshan">
+                  <i class="fa-solid fa-location-dot"></i> Lord Vitthal & Rakhumai Darshan
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Pandharpur Vitthal Rukmini Mandir', '32-Seater Tourist Coach')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="pilgrimage"
-          data-name="kolhapur mahalakshmi ambabai mandir shaktipeeth rankala panhala">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/kolhapur-mahalaxmi.jpg" alt="Kolhapur Mahalakshmi Ambabai Temple"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🚩 Pilgrimage • Kolhapur</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Kolhapur Mahalakshmi (Ambabai) Mandir</h3>
-            <p class="destination-desc">One of the prime 51 Shaktipeethas of India, the 7th-century Chalukya-style stone
+          <div class="carousel-card" data-name="kolhapur mahalakshmi ambabai mandir shaktipeeth rankala panhala">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/kolhapur-mahalaxmi.jpg" alt="Kolhapur Mahalakshmi Ambabai Temple" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Pilgrimage • Kolhapur</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Kolhapur Mahalakshmi (Ambabai) Mandir">Kolhapur Mahalakshmi (Ambabai) Mandir</h4>
+              <p class="carousel-card-desc">One of the prime 51 Shaktipeethas of India, the 7th-century Chalukya-style stone
               temple is where Goddess Mahalakshmi blesses devotees with wealth, prosperity, and peace.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">One of 51 Sacred Shaktipeethas</span>
-              <span class="destination-highlight-pill">Kiranotsav (Sun Ray Phenomenon)</span>
-              <span class="destination-highlight-pill">Intricate Chalukyan Stone Carvings</span>
-              <span class="destination-highlight-pill">Rankala Lake & Kolhapuri Culture</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Kolhapur Mahalakshmi (Ambabai) Mandir', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="One of 51 Sacred Shaktipeethas">
+                  <i class="fa-solid fa-location-dot"></i> One of 51 Sacred Shaktipeethas
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Kolhapur Mahalakshmi (Ambabai) Mandir', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="pilgrimage"
-          data-name="tuljapur bhavani mata mandir kulswamini shivaji maharaj dharashiv osmanabad">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/tuljapur-bhavani.jpg" alt="Tuljapur Bhavani Mata Temple"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🚩 Pilgrimage • Dharashiv</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Tuljapur Bhavani Mata Mandir</h3>
-            <p class="destination-desc">The supreme Kulswamini of Maharashtra and divine patron goddess of Chhatrapati
+          <div class="carousel-card" data-name="tuljapur bhavani mata mandir kulswamini shivaji maharaj dharashiv osmanabad">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/tuljapur-bhavani.jpg" alt="Tuljapur Bhavani Mata Temple" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Pilgrimage • Dharashiv</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Tuljapur Bhavani Mata Mandir">Tuljapur Bhavani Mata Mandir</h4>
+              <p class="carousel-card-desc">The supreme Kulswamini of Maharashtra and divine patron goddess of Chhatrapati
               Shivaji Maharaj, who blessed him with the sacred Bhavani Talwar (sword) for Swarajya.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Kulswamini of Chhatrapati Shivaji</span>
-              <span class="destination-highlight-pill">Sacred Kallol & Gomukh Tirthas</span>
-              <span class="destination-highlight-pill">Navratri Mahotsav Celebration</span>
-              <span class="destination-highlight-pill">Historic Hemadpanthi Temple Architecture</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Tuljapur Bhavani Mata Mandir', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Kulswamini of Chhatrapati Shivaji">
+                  <i class="fa-solid fa-location-dot"></i> Kulswamini of Chhatrapati Shivaji
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Tuljapur Bhavani Mata Mandir', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="pilgrimage"
-          data-name="akkalkot shri swami samarth mandir vatavruksha solapur">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/akkalkot-temple.jpg" alt="Akkalkot Shri Swami Samarth Temple"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🚩 Pilgrimage • Solapur</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Akkalkot Shri Swami Samarth Mandir</h3>
-            <p class="destination-desc">The eternal abode and samadhi of 19th-century divine saint Shri Swami Samarth
+          <div class="carousel-card" data-name="akkalkot shri swami samarth mandir vatavruksha solapur">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/akkalkot-temple.jpg" alt="Akkalkot Shri Swami Samarth Temple" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Pilgrimage • Solapur</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Akkalkot Shri Swami Samarth Mandir">Akkalkot Shri Swami Samarth Mandir</h4>
+              <p class="carousel-card-desc">The eternal abode and samadhi of 19th-century divine saint Shri Swami Samarth
               Maharaj (incarnation of Lord Dattatreya), famous for the holy Vatavruksha (Banyan Tree) shrine.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Vatavruksha Swami Samarth Samadhi</span>
-              <span class="destination-highlight-pill">Incarnation of Lord Dattatreya</span>
-              <span class="destination-highlight-pill">Peaceful Spiritual Meditation Halls</span>
-              <span class="destination-highlight-pill">Daily Mahaprasad for Thousands</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Akkalkot Shri Swami Samarth Mandir', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Vatavruksha Swami Samarth Samadhi">
+                  <i class="fa-solid fa-location-dot"></i> Vatavruksha Swami Samarth Samadhi
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Akkalkot Shri Swami Samarth Mandir', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="pilgrimage"
-          data-name="jejuri khandoba mandir golden bhandara temple pune purandar malhari martand">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/jejuri-khandoba.jpg" alt="Khandoba Temple, Jejuri"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🚩 Pilgrimage • Pune</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Khandoba Mandir, Jejuri (Golden Temple)</h3>
-            <p class="destination-desc">Perched high on a hill near Pune, Jejuri is the supreme shrine of Lord Khandoba
+          <div class="carousel-card" data-name="jejuri khandoba mandir golden bhandara temple pune purandar malhari martand">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/jejuri-khandoba.jpg" alt="Khandoba Temple, Jejuri" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Pilgrimage • Pune</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Khandoba Mandir, Jejuri (Golden Temple)">Khandoba Mandir, Jejuri (Golden Temple)</h4>
+              <p class="carousel-card-desc">Perched high on a hill near Pune, Jejuri is the supreme shrine of Lord Khandoba
               (Malhari Martand), famous across the world for the vibrant golden turmeric (Bhandara) showers.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Bhandara Turmeric Golden Showers</span>
-              <span class="destination-highlight-pill">Majestic Deepmalas & Stone Steps</span>
-              <span class="destination-highlight-pill">Lord Malhari Martand Deity</span>
-              <span class="destination-highlight-pill">Panoramic Views of Purandar Valley</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Khandoba Mandir, Jejuri (Golden Temple)', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Bhandara Turmeric Golden Showers">
+                  <i class="fa-solid fa-location-dot"></i> Bhandara Turmeric Golden Showers
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Khandoba Mandir, Jejuri (Golden Temple)', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="pilgrimage"
-          data-name="shegaon shri sant gajanan maharaj mandir anand sagar buldhana vidarbha">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/shegaon-gajanan.jpg" alt="Shri Sant Gajanan Maharaj Sansthan, Shegaon"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🚩 Pilgrimage • Buldhana</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Shri Sant Gajanan Maharaj Mandir, Shegaon</h3>
-            <p class="destination-desc">Known as the "Pandharpur of Vidarbha", Shegaon is home to the peaceful marble
+          <div class="carousel-card" data-name="shegaon shri sant gajanan maharaj mandir anand sagar buldhana vidarbha">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/shegaon-gajanan.jpg" alt="Shri Sant Gajanan Maharaj Sansthan, Shegaon" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Pilgrimage • Buldhana</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Shri Sant Gajanan Maharaj Mandir, Shegaon">Shri Sant Gajanan Maharaj Mandir, Shegaon</h4>
+              <p class="carousel-card-desc">Known as the "Pandharpur of Vidarbha", Shegaon is home to the peaceful marble
               Samadhi Mandir of revered saint Shri Gajanan Maharaj and the sprawling spiritual park Anand Sagar.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Sant Gajanan Maharaj Marble Samadhi</span>
-              <span class="destination-highlight-pill">Anand Sagar Spiritual Theme Park</span>
-              <span class="destination-highlight-pill">Immaculately Managed Pilgrimage Sansthan</span>
-              <span class="destination-highlight-pill">Gani Gan Ganat Bote Divine Chant</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Shri Sant Gajanan Maharaj Mandir, Shegaon', '32-Seater BharatBenz Coach')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Sant Gajanan Maharaj Marble Samadhi">
+                  <i class="fa-solid fa-location-dot"></i> Sant Gajanan Maharaj Marble Samadhi
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Shri Sant Gajanan Maharaj Mandir, Shegaon', '32-Seater BharatBenz Coach')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="destination-card" data-state="pilgrimage"
-          data-name="nashik panchavati sita gufa ramkund kalaram godavari ramayana tapovan">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/nashik-panchavati.jpg" alt="Kalaram Temple and Panchavati, Nashik"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🚩 Pilgrimage • Nashik</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Panchavati, Sita Gufa & Ramkund, Nashik</h3>
-            <p class="destination-desc">The sacred holy land where Lord Rama, Sita Mata, and Lakshmana spent their exile
-              in the Dandakaranya forest. Features the 5 banyan trees, Sita Gufa, and the black-stone Kalaram Temple.
-            </p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Historic Kalaram Temple</span>
-              <span class="destination-highlight-pill">Sita Gufa & 5 Sacred Banyan Trees</span>
-              <span class="destination-highlight-pill">Ramkund Holy Kumbh Mela Snan</span>
-              <span class="destination-highlight-pill">Tapovan & Kapileshwar Mahadev</span>
+          <div class="carousel-card" data-name="nashik panchavati sita gufa ramkund kalaram godavari ramayana tapovan">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/nashik-panchavati.jpg" alt="Kalaram Temple and Panchavati, Nashik" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Pilgrimage • Nashik</span>
             </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Panchavati, Sita Gufa & Ramkund, Nashik', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="hillstation"
-          data-name="mahabaleshwar panchgani venna lake arthur seat mapro garden strawberry satara">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/mahabaleshwar.jpg" alt="Mahabaleshwar Venna Lake & Sahyadri Hills"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">⛰️ Sahyadri Hill • Satara</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Mahabaleshwar & Panchgani Hill Station</h3>
-            <p class="destination-desc">The queen of Maharashtra hill stations nestled in the Western Ghats at 1,353m
-              altitude. Renowned for lush strawberry gardens, Venna Lake boating, Wilson Point sunrise, and table land
-              in Panchgani.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Scenic Venna Lake Boating & Horse Riding</span>
-              <span class="destination-highlight-pill">Arthur's Seat & Elephant's Head Points</span>
-              <span class="destination-highlight-pill">Fresh Strawberry Farms & Mapro Garden</span>
-              <span class="destination-highlight-pill">Panchgani Asia's 2nd Longest Tableland</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Mahabaleshwar & Panchgani Hill Station', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="hillstation"
-          data-name="lonavala khandala tiger point bhushi dam karla caves waterfalls expressway pune">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/lonavala-khandala.jpg" alt="Lonavala Tiger Point & Ghats"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">⛰️ Sahyadri Hill • Pune</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Lonavala, Khandala & Karla Caves</h3>
-            <p class="destination-desc">Maharashtra's most beloved twin hill stations, perched on the Mumbai-Pune
-              Expressway with plunging mist-covered cliffs, gushing monsoon waterfalls, Bhushi Dam, and ancient
-              2nd-century BC Karla rock caves.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Tiger Point & Lion's Point Clifftops</span>
-              <span class="destination-highlight-pill">Bhushi Dam Water Cascades</span>
-              <span class="destination-highlight-pill">Ancient Buddhist Karla & Bhaja Caves</span>
-              <span class="destination-highlight-pill">Famous Authentic Lonavala Chikki</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Lonavala, Khandala & Karla Caves', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="hillstation"
-          data-name="matheran eco sensitive automobile free hill station toy train charlotte lake louisa point raigad">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/matheran-hills.jpg" alt="Matheran Eco-Friendly Hill Station"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">⛰️ Sahyadri Hill • Raigad</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Matheran Eco-Sensitive Hill Station</h3>
-            <p class="destination-desc">Asia's only automobile-free hill station, perched high at 800m. Preserves
-              pristine red-soil forest trails, historic heritage toy train, Charlotte Lake, and 38 breathtaking cliff
-              viewpoints.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">100% Pollution-Free Automobile-Free Zone</span>
-              <span class="destination-highlight-pill">Historic Neral-Matheran Toy Train</span>
-              <span class="destination-highlight-pill">Charlotte Lake & Echo Point</span>
-              <span class="destination-highlight-pill">Panoramic Louisa Point Valley Vistas</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Matheran Eco-Sensitive Hill Station', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="hillstation"
-          data-name="bhandardara arthur lake randha falls wilson dam kalsubai foothills ahmednagar">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/bhandardara.jpg" alt="Bhandardara Arthur Lake and Wilson Dam"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">⛰️ Sahyadri Hill • Ahmednagar</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Bhandardara Lake & Arthur Hill Station</h3>
-            <p class="destination-desc">A hidden, tranquil paradise nestled beside the pristine Arthur Lake and Wilson
-              Dam, surrounded by Maharashtra's tallest mountain ranges and spectacular Randha Waterfalls.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Arthur Lake Boating & Lakeside Camping</span>
-              <span class="destination-highlight-pill">Grand Wilson Dam & Umbrella Falls</span>
-              <span class="destination-highlight-pill">Majestic Randha Waterfall Cascades</span>
-              <span class="destination-highlight-pill">Pre-Monsoon Fireflies Festival</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Bhandardara Lake & Arthur Hill Station', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="hillstation"
-          data-name="kaas plateau kaas pathar valley of flowers unesco heritage satara wildflowers">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/kaas-plateau.jpg" alt="Kaas Plateau UNESCO Valley of Flowers, Satara"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">⛰️ UNESCO Nature • Satara</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Kaas Plateau (Valley of Flowers of Maharashtra)</h3>
-            <p class="destination-desc">A UNESCO World Natural Heritage site near Satara, where over 850 species of rare
-              wildflowers bloom into vibrant pink, purple, and yellow carpets across the volcanic plateau every monsoon.
-            </p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">UNESCO World Natural Heritage Site</span>
-              <span class="destination-highlight-pill">Over 850 Species of Rare Wildflowers</span>
-              <span class="destination-highlight-pill">Breathtaking 1000-Acre Flower Carpet</span>
-              <span class="destination-highlight-pill">Kaas Lake & Vajrai Waterfall Nearby</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Kaas Plateau (Valley of Flowers of Maharashtra)', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="hillstation"
-          data-name="kalsubai peak highest peak of maharashtra 1646m everest sahyadri bari trek">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/kalsubai-peak.jpg" alt="Kalsubai Peak, Highest Summit in Maharashtra"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">⛰️ Sahyadri Peak • Ahmednagar</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Kalsubai Peak (Highest Peak of Maharashtra - 1646m)</h3>
-            <p class="destination-desc">Reverently hailed as the "Everest of Maharashtra", Kalsubai stands at 1,646
-              meters (5,400 ft) offering unrivaled 360-degree vistas of Bhandardara, Arthur Lake, and Sahyadri forts.
-            </p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Maharashtra's Highest Mountain Summit</span>
-              <span class="destination-highlight-pill">Kalsubai Mata Temple at the Peak</span>
-              <span class="destination-highlight-pill">Well-Marked Steel Ladder Trek Route</span>
-              <span class="destination-highlight-pill">Spectacular Sunrise Above the Clouds</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Kalsubai Peak (Highest Peak of Maharashtra - 1646m)', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="hillstation"
-          data-name="igatpuri thal ghat waterfalls vipassana dhamma giri bhatsa valley nashik">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/igatpuri-hills.jpg" alt="Igatpuri Hill Station and Waterfalls"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">⛰️ Sahyadri Hill • Nashik</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Igatpuri Hill Station & Sahyadri Waterfalls</h3>
-            <p class="destination-desc">A stunning Sahyadri hill retreat located in the Western Ghats, famed for misty
-              monsoon waterfalls, dense forest trails, ancient forts, and the world's largest Vipassana meditation
-              center Dhamma Giri.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Dhamma Giri Global Vipassana Center</span>
-              <span class="destination-highlight-pill">Thal Ghat & Camel Valley Waterfalls</span>
-              <span class="destination-highlight-pill">Bhatsa River Valley Views</span>
-              <span class="destination-highlight-pill">Tringalwadi Fort Trek & Lake</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Igatpuri Hill Station & Sahyadri Waterfalls', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="hillstation"
-          data-name="chikhaldara melghat coffee hill station gavilgad fort amravati vidarbha">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/chikhaldara.jpg" alt="Chikhaldara Hill Station, Melghat"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">⛰️ Hill Station • Amravati</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Chikhaldara Hill Station & Coffee Plantations</h3>
-            <p class="destination-desc">Vidarbha's only hill resort perched at 1,118m on the Chikhaldara plateau,
-              boasting cool climate, fragrant coffee plantations, panoramic viewpoints, and the historical Gavilgad
-              Fort.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Only Coffee Growing Region in Maharashtra</span>
-              <span class="destination-highlight-pill">Gavilgad & Narnala Historical Forts</span>
-              <span class="destination-highlight-pill">Bhimkund & Devi Point Viewpoints</span>
-              <span class="destination-highlight-pill">Melghat Tiger Reserve Gateway</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Chikhaldara Hill Station & Coffee Plantations', '32-Seater BharatBenz Coach')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="hillstation"
-          data-name="amboli hill station cherrapunji maharashtra waterfalls rainforest flora sindhudurg">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/amboli-falls.jpg" alt="Amboli Waterfalls and Rainforest, South Konkan"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">⛰️ Rainforest Hill • Sindhudurg</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Amboli Hill Station & Waterfalls</h3>
-            <p class="destination-desc">Known as the "Cherrapunji of Maharashtra", Amboli is the wettest place in the
-              state located in South Konkan, famous for majestic cascading waterfalls, mist, and incredible
-              biodiversity.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Cascading Amboli Main Waterfall</span>
-              <span class="destination-highlight-pill">Sunset Point & Madhavgad Fort</span>
-              <span class="destination-highlight-pill">Rich Sahyadri Rainforest Flora & Fauna</span>
-              <span class="destination-highlight-pill">Nangartas Waterfall Gorge</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Amboli Hill Station & Waterfalls', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="raigad fort capital of swarajya chhatrapati shivaji maharaj samadhi ropeway mahad">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/raigad-fort.jpg" alt="Raigad Fort, Capital of the Maratha Empire"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 Maratha Fort • Raigad</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Raigad Fort (Capital of Swarajya)</h3>
-            <p class="destination-desc">The historic hill citadel chosen by Chhatrapati Shivaji Maharaj as the capital
-              of Swarajya in 1674. Home to the Royal Throne (Raj Sabha), Shivaji Maharaj Samadhi, and modern ropeway.
-            </p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Chhatrapati Shivaji Maharaj Samadhi</span>
-              <span class="destination-highlight-pill">Grand Raj Sabha (Royal Throne Room)</span>
-              <span class="destination-highlight-pill">Hirkani Buruj & Maha Darwaja</span>
-              <span class="destination-highlight-pill">Smooth Raigad Ropeway Experience</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Raigad Fort (Capital of Swarajya)', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="rajgad fort royal sovereign capital of shivaji maharaj 26 years suvela padmavati sanjivani pune">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/rajgad-fort.jpg" alt="Rajgad Fort Suvela Machi and Citadel"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 Maratha Fort • Pune</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Rajgad Fort (Ruling Capital of Swarajya for 26 Years)</h3>
-            <p class="destination-desc">The formidable mountain capital where Chhatrapati Shivaji Maharaj resided for
-              over 26 years, planning the expansion of Swarajya. Famous for its Balekilla, Padmavati Machi, and
-              needle-hole rock Nedhe.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Ruling Capital of Shivaji Maharaj for 26+ Years</span>
-              <span class="destination-highlight-pill">Iconic Suvela & Sanjivani Machi Fortifications</span>
-              <span class="destination-highlight-pill">High-Altitude Balekilla Citadel</span>
-              <span class="destination-highlight-pill">Nedhe (Natural Giant Needle-Hole in Rock)</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Rajgad Fort (Ruling Capital of Swarajya for 26 Years)', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="torna fort prachandagad first fort captured by shivaji maharaj velhe pune">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/torna-fort.jpg" alt="Torna Fort Prachandagad, Pune"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 Maratha Fort • Pune</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Torna Fort (Prachandagad - First Fort of Swarajya)</h3>
-            <p class="destination-desc">The first fort captured by 16-year-old Shivaji Maharaj in 1646, marking the
-              founding of Hindavi Swarajya. Nicknamed Prachandagad ("Massive Fort") for its colossal walls and ridge
-              cliffs.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">First Fort Captured by Chhatrapati Shivaji Maharaj (1646)</span>
-              <span class="destination-highlight-pill">Mengai Devi Temple & Torna Machi</span>
-              <span class="destination-highlight-pill">Dramatic Zunjar Machi Ridge Fortification</span>
-              <span class="destination-highlight-pill">Origin of Hindavi Swarajya History</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Torna Fort (Prachandagad - First Fort of Swarajya)', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="lohagad fort iron fort vinchukata scorpion tail lonavala malavali pune">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/lohagad-fort.jpg" alt="Lohagad Iron Fort Vinchukata Ridge"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 Maratha Fort • Lonavala</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Lohagad Fort (The Iron Fort & Vinchukata)</h3>
-            <p class="destination-desc">The formidable "Iron Fort" perched at 1,033m overlooking Pavana Dam. Prominently
-              used by Shivaji Maharaj to store treasury, famous for the iconic 1,500-meter Vinchukata (scorpion's tail)
-              ridge.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">1,500-Meter Vinchukata (Scorpion's Tail) Ridge</span>
-              <span class="destination-highlight-pill">Maha Darwaja & 4 Layered Fort Gates</span>
-              <span class="destination-highlight-pill">Panoramic Pavana Dam & Lake Views</span>
-              <span class="destination-highlight-pill">Ancient Stepwells & Granaries</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Lohagad Fort (The Iron Fort & Vinchukata)', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="shivneri fort birthplace of chhatrapati shivaji maharaj jijabai badami junnar">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/shivneri-fort.jpg" alt="Shivneri Fort, Junnar Pune"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 Heritage Fort • Junnar</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Shivneri Fort (Birthplace of Chhatrapati Shivaji)</h3>
-            <p class="destination-desc">The sacred hill fortress where Chhatrapati Shivaji Maharaj was born on 19th
-              February 1630. Features the prayer sanctum of Goddess Shivai, Rajgadhi, and Badami lake.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Shivaji Maharaj Birth Memorial (Janmasthal)</span>
-              <span class="destination-highlight-pill">Ancient Shivai Devi Temple</span>
-              <span class="destination-highlight-pill">Seven Layered Invulnerable Fort Gates</span>
-              <span class="destination-highlight-pill">Amberkhana & Badami Talav</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Shivneri Fort (Birthplace of Chhatrapati Shivaji)', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="sinhagad fort tanaji malusare memorial khadakwasla dam pune">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/sinhagad-fort.jpg" alt="Sinhagad Fort Lion Fort, Pune"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 Maratha Fort • Pune</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Sinhagad Fort & Khadakwasla, Pune</h3>
-            <p class="destination-desc">The legendary "Lion Fort" immortalized by Tanaji Malusare's heroic Battle of
-              1670 ("Gad aala pan sinh gela"). Famous for authentic Pithla Bhakri, Kanda Bhajji, and Khadakwasla
-              backwaters.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Tanaji Malusare Samadhi Memorial</span>
-              <span class="destination-highlight-pill">Authentic Hot Pithla Bhakri & Matka Dahi</span>
-              <span class="destination-highlight-pill">Panoramic Pune City & Khadakwasla Vistas</span>
-              <span class="destination-highlight-pill">Kalyan Darwaja & Wind Point</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Sinhagad Fort & Khadakwasla, Pune', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="pratapgad fort afzal khan battle bhavani mata temple mahabaleshwar satara">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/pratapgad-fort.jpg" alt="Pratapgad Fort, Mahabaleshwar"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 Maratha Fort • Satara</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Pratapgad Fort & Mahabaleshwar Foothills</h3>
-            <p class="destination-desc">Built in 1656 by Moropant Pingle under Shivaji Maharaj's guidance, this fort
-              witnessed the historic defeat of Afzal Khan. Features the sacred Bhavani temple and equestrian Shivaji
-              statue.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Historic Afzal Khan Battleground Site</span>
-              <span class="destination-highlight-pill">Bhavani Mata Temple with Sphatik Linga</span>
-              <span class="destination-highlight-pill">Giant Bronze Chhatrapati Shivaji Statue</span>
-              <span class="destination-highlight-pill">Breathtaking 360-degree Sahyadri Views</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Pratapgad Fort & Mahabaleshwar Foothills', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="vasota fort vyaghragad koyna wildlife sanctuary shivsagar lake boat safari satara">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/vasota-koyna.jpg" alt="Vasota Fort and Shivsagar Lake Boating, Koyna"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 Jungle Fort • Satara</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Vasota Jungle Fort & Koyna Wildlife Sanctuary</h3>
-            <p class="destination-desc">An incredible wilderness fort nestled deep inside the Koyna Wildlife Sanctuary,
-              accessible only by a scenic boat safari across Shivsagar Lake followed by an enchanting rainforest trek.
-            </p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Speedboat Ride Across Shivsagar Lake</span>
-              <span class="destination-highlight-pill">Dense Koyna Tiger Reserve Jungle Trek</span>
-              <span class="destination-highlight-pill">Nageshwar Cave & Shivling Temple</span>
-              <span class="destination-highlight-pill">Babu Kada Unbroken Cliff Drop</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Vasota Jungle Fort & Koyna Wildlife Sanctuary', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="ajanta ellora caves kailasa temple unesco world heritage sambhajinagar rock cut buddhist">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/ellora-caves.jpg" alt="Kailasa Temple at Ellora Caves"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 UNESCO World Heritage</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Ajanta & Ellora UNESCO World Heritage Caves</h3>
-            <p class="destination-desc">World-famous UNESCO World Heritage marvels: 34 Ellora caves housing the
-              astonishing Kailasa monolithic temple carved from a single mountain, and 30 Ajanta caves with ancient
-              Buddhist frescoes.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Kailasa Monolithic Rock-Cut Marvel (Cave 16)</span>
-              <span class="destination-highlight-pill">Ancient Ajanta 2nd-century BC Murals</span>
-              <span class="destination-highlight-pill">Buddhist, Hindu & Jain Cave Architecture</span>
-              <span class="destination-highlight-pill">Masterpiece of Human Creative Genius</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Ajanta & Ellora UNESCO World Heritage Caves', '32-Seater BharatBenz Coach')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="forts"
-          data-name="elephanta caves unesco world heritage island trimurti mumbai harbour ferry gateway">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/elephanta-caves.jpg"
-              alt="Elephanta Caves Trimurti Shiva, Mumbai Harbour" class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏰 UNESCO Island • Mumbai</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Elephanta Caves UNESCO World Heritage</h3>
-            <p class="destination-desc">A UNESCO World Heritage island in Mumbai Harbour reached by scenic ferry from
-              the Gateway of India. Houses monumental 5th-century rock-cut cave temples dedicated to Lord Shiva.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Iconic 20-Foot Sadashiva Trimurti Sculpture</span>
-              <span class="destination-highlight-pill">Scenic Ferry Cruise Across Mumbai Harbour</span>
-              <span class="destination-highlight-pill">Mini Heritage Island Toy Train</span>
-              <span class="destination-highlight-pill">Ancient 5th to 8th Century Bas-Relief Carvings</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Elephanta Caves UNESCO World Heritage', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="beaches"
-          data-name="alibaug nagaon beach kolaba fort water sports kihim raigad">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/alibaug-beach.jpg" alt="Alibaug Beach and Kolaba Sea Fort"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🌴 Konkan Beach • Raigad</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Alibaug, Nagaon Beach & Kolaba Fort</h3>
-            <p class="destination-desc">The most popular coastal getaway from Pune and Mumbai, featuring palm-fringed
-              sands, thrilling water sports, seafood shacks, and Shivaji Maharaj's sea fort Kolaba built inside the
-              waves.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Kolaba Sea Fort Accessible at Low Tide</span>
-              <span class="destination-highlight-pill">Nagaon & Varsoli Water Sports & Jet Ski</span>
-              <span class="destination-highlight-pill">Fresh Konkani Surmai & Pomfret Delicacies</span>
-              <span class="destination-highlight-pill">Scenic Coastal Coconut Groves</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Alibaug, Nagaon Beach & Kolaba Fort', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="beaches"
-          data-name="murud janjira sea fort invulnerable island kashid raigad rajapuri">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/murud-janjira.jpg" alt="Murud-Janjira Island Sea Fort"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🌴 Konkan Sea Fort • Raigad</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Murud-Janjira Sea Fort & Beach</h3>
-            <p class="destination-desc">One of the world's strongest and most impregnable island sea forts, built in the
-              Arabian Sea with 19 round bastions that remained unconquered throughout centuries.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Unconquered Island Citadel in Arabian Sea</span>
-              <span class="destination-highlight-pill">Sailboat Ride from Rajapuri Jetty</span>
-              <span class="destination-highlight-pill">Third Largest Cannon in India (Kalak Bangdi)</span>
-              <span class="destination-highlight-pill">Murud Sandy Beach & Sunset Strolls</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Murud-Janjira Sea Fort & Beach', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="beaches"
-          data-name="kashid beach white sand beach water sports parasailing casuarina groves raigad">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/kashid-beach.jpg" alt="Kashid White Sand Beach, Maharashtra"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🌴 Konkan Beach • Raigad</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Kashid Beach (White Sand Beach & Water Sports)</h3>
-            <p class="destination-desc">Renowned as one of the cleanest and most picturesque beaches in North Konkan,
-              stretching 3 km along the Arabian Sea with silvery white sand, clear blue water, and thrilling adventure
-              sports.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Silvery White Sand & Casuarina Forest</span>
-              <span class="destination-highlight-pill">Parasailing, Banana Rides & Jet Skiing</span>
-              <span class="destination-highlight-pill">Gentle Waves Perfect for Family Swimming</span>
-              <span class="destination-highlight-pill">Scenic Coastal Drive from Alibaug</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Kashid Beach (White Sand Beach & Water Sports)', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="beaches"
-          data-name="harihareshwar shrivardhan dakshin kashi kalbhairav temple sea cliffs pradakshina raigad">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/harihareshwar.jpg" alt="Harihareshwar Temple and Coastal Cliffs"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🌴 Coastal Pilgrim • Raigad</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Harihareshwar & Shrivardhan (Dakshin Kashi)</h3>
-            <p class="destination-desc">Reverently known as "Dakshin Kashi" (Kashi of the South), this sacred coastal
-              paradise is where Savitri River enters the Arabian Sea, famous for Kalbhairav Mandir and dramatic
-              sea-cliff pradakshina.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Ancient Kalbhairav & Harihareshwar Mandir</span>
-              <span class="destination-highlight-pill">Dramatic Sea-Cliff Rocky Pradakshina Walk</span>
-              <span class="destination-highlight-pill">Pristine Black & White Sand Shrivardhan Beach</span>
-              <span class="destination-highlight-pill">Peaceful Uncrowded Konkan Ambiance</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Harihareshwar & Shrivardhan (Dakshin Kashi)', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="beaches"
-          data-name="ganpatipule beach swayambhu ganpati mandir malgund prachin konkan ratnagiri">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/ganpatipule-beach.jpg" alt="Ganpatipule Beach and Ganpati Mandir"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🌴 Konkan Beach • Ratnagiri</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Ganpatipule Beach & Swayambhu Ganpati</h3>
-            <p class="destination-desc">A divine coastal paradise where a 400-year-old self-originated Ganesha idol
-              rests directly on the pristine white shores facing the Arabian Sea. The entire hill is circumambulated as
-              pradikshana.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">400-Year-Old Swayambhu Beach Ganesha</span>
-              <span class="destination-highlight-pill">Hill Circumambulation (Pradakshina Path)</span>
-              <span class="destination-highlight-pill">Prachin Konkan Cultural Museum</span>
-              <span class="destination-highlight-pill">Pure White Sands & Alphonso Mango Orchards</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Ganpatipule Beach & Swayambhu Ganpati', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="beaches"
-          data-name="dapoli murud harnai suvarnadurg sea fort dolphin safari unhavare hot springs ratnagiri">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/dapoli-beach.jpg" alt="Dapoli Coast and Murud Harnai, Ratnagiri"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🌴 Konkan Beach • Ratnagiri</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Dapoli & Murud-Harnai (Dolphin Safari & Sea Forts)</h3>
-            <p class="destination-desc">Known as the "Mini Mahabaleshwar of Konkan" for its year-round cool breeze,
-              Dapoli features unpolluted beaches, live Arabian Sea dolphin watching, fish auctions at Harnai, and
-              historic Suvarnadurg.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Early Morning Dolphin Spotting Boat Ride</span>
-              <span class="destination-highlight-pill">Suvarnadurg Island Sea Fort Tour</span>
-              <span class="destination-highlight-pill">Unhavare Natural Sulfur Hot Springs</span>
-              <span class="destination-highlight-pill">Lush Betel Nut & Cashew Plantations</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Dapoli & Murud-Harnai (Dolphin Safari & Sea Forts)', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="beaches"
-          data-name="tarkarli scuba diving snorkeling sindhudurg fort malvan corals watersports">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/tarkarli-beach.jpg" alt="Tarkarli Scuba Diving & Sindhudurg Fort"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🌴 Konkan Beach • Malvan</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Tarkarli Scuba & Sindhudurg Sea Fort</h3>
-            <p class="destination-desc">Maharashtra's premier scuba diving and coral hub in Malvan, offering crystal
-              clear waters, dolphin safaris, Karli backwaters, and Chhatrapati Shivaji Maharaj's majestic 1664
-              Sindhudurg Fort.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">PADI Certified Scuba Diving & Corals</span>
-              <span class="destination-highlight-pill">Historic Sindhudurg Island Fort Tour</span>
-              <span class="destination-highlight-pill">Karli River Backwaters & Tsunami Island</span>
-              <span class="destination-highlight-pill">Authentic Malvani Fish Thali Experience</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Tarkarli Scuba & Sindhudurg Sea Fort', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="city"
-          data-name="mumbai gateway of india marine drive bandra worli sea link siddhi vinayak filmcity">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/mumbai-gateway.jpg" alt="Gateway of India, Mumbai Coastal View"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏙️ City Tour • Mumbai</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Gateway of India & Mumbai Darshan</h3>
-            <p class="destination-desc">The iconic commercial capital of India: cruise past Marine Drive's Queen's
-              Necklace, Gateway of India, Bandra-Worli Sea Link, Siddhivinayak Temple, and Bollywood Film City in AC
-              comfort.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Gateway of India & Taj Mahal Palace</span>
-              <span class="destination-highlight-pill">Marine Drive Queen's Necklace Cruise</span>
-              <span class="destination-highlight-pill">Siddhivinayak Temple VIP Blessings</span>
-              <span class="destination-highlight-pill">Bandra-Worli Sea Link Engineering Marvel</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Gateway of India & Mumbai Darshan', '32-Seater BharatBenz Coach')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="city"
-          data-name="pune shreemant dagdusheth ganpati shaniwar wada aga khan palace osho ashram">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/pune-dagdusheth.jpg"
-              alt="Shreemant Dagdusheth Halwai Ganpati Temple, Pune" class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏙️ City Tour • Pune</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Shreemant Dagdusheth & Pune Heritage</h3>
-            <p class="destination-desc">Explore the cultural capital of Maharashtra: seek blessings at the world-famous
-              golden Shreemant Dagdusheth Ganpati, walk through Peshwa historic fortress Shaniwar Wada, and Aga Khan
-              Palace.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Shreemant Dagdusheth Golden Ganpati</span>
-              <span class="destination-highlight-pill">Historic Peshwa Seat Shaniwar Wada</span>
-              <span class="destination-highlight-pill">Mahatma Gandhi Memorial at Aga Khan Palace</span>
-              <span class="destination-highlight-pill">Sarasbaug & Parvati Hill Temple</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Shreemant Dagdusheth & Pune Heritage', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="city"
-          data-name="lonar meteorite crater lake basaltic impact hyper saline ram gaya buldhana">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/lonar-lake.jpg" alt="Lonar Meteorite Crater Lake, Buldhana"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏙️ Geo Wonder • Buldhana</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Lonar Meteorite Crater Lake</h3>
-            <p class="destination-desc">One of the world's rarest natural wonders: a 52,000-year-old hyper-saline
-              meteorite impact crater lake formed in basalt rock, ringed by ancient 12th-century Hemadpanthi temples and
-              lush forest.</p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">World's Only Hyper-Saline Basalt Meteorite Crater</span>
-              <span class="destination-highlight-pill">52,000-Year-Old Astronomical Geological Marvel</span>
-              <span class="destination-highlight-pill">Ancient Daitya Sudan Hemadpanthi Temple</span>
-              <span class="destination-highlight-pill">Rare Migratory Flamingos & Waterfowl Habitat</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Lonar Meteorite Crater Lake', '17-Seater Force Urbania Bus')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="destination-card" data-state="city"
-          data-name="tadoba andhari tiger reserve wildlife safari chandrapur moharli gypsy bengal tiger">
-          <div class="destination-img-wrap">
-            <img src="assets/images/destinations/tadoba-safari.jpg" alt="Tadoba Andhari Tiger Reserve, Maharashtra"
-              class="destination-img" loading="lazy">
-            <span class="destination-badge-state">🏙️ Wildlife Safari • Chandrapur</span>
-          </div>
-          <div class="destination-body">
-            <h3 class="destination-title">Tadoba-Andhari Tiger Reserve Wildlife Safari</h3>
-            <p class="destination-desc">Maharashtra's oldest and premier national park in Chandrapur, internationally
-              renowned for highest tiger sighting density, thrilling open-top gypsy safaris, leopards, and Erai Lake.
-            </p>
-            <div class="destination-highlights-title">Famous Highlights:</div>
-            <div class="destination-highlights-wrap">
-              <span class="destination-highlight-pill">Highest Royal Bengal Tiger Sighting Density</span>
-              <span class="destination-highlight-pill">Open-Top 4x4 Gypsy Forest Safaris</span>
-              <span class="destination-highlight-pill">Moharli, Kolara & Navegaon Forest Gates</span>
-              <span class="destination-highlight-pill">Erai Lake & Dense Teak Forest Ecosystem</span>
-            </div>
-            <div class="destination-footer">
-              <button class="btn-book-tour-wp"
-                onclick="openPlaceBookingModal('Tadoba-Andhari Tiger Reserve Wildlife Safari', '17-Seater Tempo Traveller (16+1)')">
-                <i class="fa-brands fa-whatsapp"></i> Book on WhatsApp
-              </button>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Panchavati, Sita Gufa & Ramkund, Nashik">Panchavati, Sita Gufa & Ramkund, Nashik</h4>
+              <p class="carousel-card-desc">The sacred holy land where Lord Rama, Sita Mata, and Lakshmana spent their exile
+              in the Dandakaranya forest. Features the 5 banyan trees, Sita Gufa, and the black-stone Kalaram Temple.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Historic Kalaram Temple">
+                  <i class="fa-solid fa-location-dot"></i> Historic Kalaram Temple
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Panchavati, Sita Gufa & Ramkund, Nashik', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Show More / Show Less Button -->
-      <div class="show-more-wrap text-center" id="showMoreWrap">
-        <button class="btn-show-more" id="btnShowMore" onclick="toggleShowMore()">
-          <span class="show-more-text"><i class="fa-solid fa-chevron-down"></i> Show More Destinations</span>
-          <span class="show-more-count" id="showMoreCount"></span>
-        </button>
+      <!-- Category Block: Sahyadri Hill Stations & Summits -->
+      <div class="carousel-category-block reveal-on-scroll">
+        <div class="carousel-row-header">
+          <div class="carousel-row-title-wrap">
+            <h3 class="carousel-row-title">
+              <i class="fa-solid fa-mountain-sun"></i> Sahyadri Hill Stations & Summits <span class="carousel-count-pill">9 Destinations</span>
+            </h3>
+            <span class="carousel-row-subtitle">Cool mist retreats, waterfalls, valley viewpoints & camping</span>
+          </div>
+          <div class="carousel-nav-arrows">
+            <button class="carousel-arrow prev" onclick="scrollCarousel('trackHillStations', -1)" aria-label="Previous Destinations">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="carousel-arrow next" onclick="scrollCarousel('trackHillStations', 1)" aria-label="Next Destinations">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="carousel-track" id="trackHillStations">
+          <div class="carousel-card" data-name="mahabaleshwar panchgani venna lake arthur seat mapro garden strawberry satara">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/mahabaleshwar.jpg" alt="Mahabaleshwar Venna Lake & Sahyadri Hills" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Sahyadri Hill • Satara</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Mahabaleshwar & Panchgani Hill Station">Mahabaleshwar & Panchgani Hill Station</h4>
+              <p class="carousel-card-desc">The queen of Maharashtra hill stations nestled in the Western Ghats at 1,353m
+              altitude. Renowned for lush strawberry gardens, Venna Lake boating, Wilson Point sunrise, and table land
+              in Panchgani.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Scenic Venna Lake Boating & Horse Riding">
+                  <i class="fa-solid fa-location-dot"></i> Scenic Venna Lake Boating & Horse Riding
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Mahabaleshwar & Panchgani Hill Station', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="lonavala khandala tiger point bhushi dam karla caves waterfalls expressway pune">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/lonavala-khandala.jpg" alt="Lonavala Tiger Point & Ghats" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Sahyadri Hill • Pune</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Lonavala, Khandala & Karla Caves">Lonavala, Khandala & Karla Caves</h4>
+              <p class="carousel-card-desc">Maharashtra's most beloved twin hill stations, perched on the Mumbai-Pune
+              Expressway with plunging mist-covered cliffs, gushing monsoon waterfalls, Bhushi Dam, and ancient
+              2nd-century BC Karla rock caves.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Tiger Point & Lion's Point Clifftops">
+                  <i class="fa-solid fa-location-dot"></i> Tiger Point & Lion's Point Clifftops
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Lonavala, Khandala & Karla Caves', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="matheran eco sensitive automobile free hill station toy train charlotte lake louisa point raigad">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/matheran-hills.jpg" alt="Matheran Eco-Friendly Hill Station" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Sahyadri Hill • Raigad</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Matheran Eco-Sensitive Hill Station">Matheran Eco-Sensitive Hill Station</h4>
+              <p class="carousel-card-desc">Asia's only automobile-free hill station, perched high at 800m. Preserves
+              pristine red-soil forest trails, historic heritage toy train, Charlotte Lake, and 38 breathtaking cliff
+              viewpoints.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="100% Pollution-Free Automobile-Free Zone">
+                  <i class="fa-solid fa-location-dot"></i> 100% Pollution-Free Automobile-Free Zone
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Matheran Eco-Sensitive Hill Station', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="bhandardara arthur lake randha falls wilson dam kalsubai foothills ahmednagar">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/bhandardara.jpg" alt="Bhandardara Arthur Lake and Wilson Dam" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Sahyadri Hill • Ahmednagar</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Bhandardara Lake & Arthur Hill Station">Bhandardara Lake & Arthur Hill Station</h4>
+              <p class="carousel-card-desc">A hidden, tranquil paradise nestled beside the pristine Arthur Lake and Wilson
+              Dam, surrounded by Maharashtra's tallest mountain ranges and spectacular Randha Waterfalls.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Arthur Lake Boating & Lakeside Camping">
+                  <i class="fa-solid fa-location-dot"></i> Arthur Lake Boating & Lakeside Camping
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Bhandardara Lake & Arthur Hill Station', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="kaas plateau kaas pathar valley of flowers unesco heritage satara wildflowers">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/kaas-plateau.jpg" alt="Kaas Plateau UNESCO Valley of Flowers, Satara" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">UNESCO Nature • Satara</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Kaas Plateau (Valley of Flowers of Maharashtra)">Kaas Plateau (Valley of Flowers of Maharashtra)</h4>
+              <p class="carousel-card-desc">A UNESCO World Natural Heritage site near Satara, where over 850 species of rare
+              wildflowers bloom into vibrant pink, purple, and yellow carpets across the volcanic plateau every monsoon.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="UNESCO World Natural Heritage Site">
+                  <i class="fa-solid fa-location-dot"></i> UNESCO World Natural Heritage Site
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Kaas Plateau (Valley of Flowers of Maharashtra)', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="kalsubai peak highest peak of maharashtra 1646m everest sahyadri bari trek">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/kalsubai-peak.jpg" alt="Kalsubai Peak, Highest Summit in Maharashtra" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Sahyadri Peak • Ahmednagar</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Kalsubai Peak (Highest Peak of Maharashtra - 1646m)">Kalsubai Peak (Highest Peak of Maharashtra - 1646m)</h4>
+              <p class="carousel-card-desc">Reverently hailed as the "Everest of Maharashtra", Kalsubai stands at 1,646
+              meters (5,400 ft) offering unrivaled 360-degree vistas of Bhandardara, Arthur Lake, and Sahyadri forts.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Maharashtra's Highest Mountain Summit">
+                  <i class="fa-solid fa-location-dot"></i> Maharashtra's Highest Mountain Summit
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Kalsubai Peak (Highest Peak of Maharashtra - 1646m)', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="igatpuri thal ghat waterfalls vipassana dhamma giri bhatsa valley nashik">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/igatpuri-hills.jpg" alt="Igatpuri Hill Station and Waterfalls" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Sahyadri Hill • Nashik</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Igatpuri Hill Station & Sahyadri Waterfalls">Igatpuri Hill Station & Sahyadri Waterfalls</h4>
+              <p class="carousel-card-desc">A stunning Sahyadri hill retreat located in the Western Ghats, famed for misty
+              monsoon waterfalls, dense forest trails, ancient forts, and the world's largest Vipassana meditation
+              center Dhamma Giri.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Dhamma Giri Global Vipassana Center">
+                  <i class="fa-solid fa-location-dot"></i> Dhamma Giri Global Vipassana Center
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Igatpuri Hill Station & Sahyadri Waterfalls', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="chikhaldara melghat coffee hill station gavilgad fort amravati vidarbha">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/chikhaldara.jpg" alt="Chikhaldara Hill Station, Melghat" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Hill Station • Amravati</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Chikhaldara Hill Station & Coffee Plantations">Chikhaldara Hill Station & Coffee Plantations</h4>
+              <p class="carousel-card-desc">Vidarbha's only hill resort perched at 1,118m on the Chikhaldara plateau,
+              boasting cool climate, fragrant coffee plantations, panoramic viewpoints, and the historical Gavilgad
+              Fort.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Only Coffee Growing Region in Maharashtra">
+                  <i class="fa-solid fa-location-dot"></i> Only Coffee Growing Region in Maharashtra
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Chikhaldara Hill Station & Coffee Plantations', '32-Seater BharatBenz Coach')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="amboli hill station cherrapunji maharashtra waterfalls rainforest flora sindhudurg">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/amboli-falls.jpg" alt="Amboli Waterfalls and Rainforest, South Konkan" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Rainforest Hill • Sindhudurg</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Amboli Hill Station & Waterfalls">Amboli Hill Station & Waterfalls</h4>
+              <p class="carousel-card-desc">Known as the "Cherrapunji of Maharashtra", Amboli is the wettest place in the
+              state located in South Konkan, famous for majestic cascading waterfalls, mist, and incredible
+              biodiversity.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Cascading Amboli Main Waterfall">
+                  <i class="fa-solid fa-location-dot"></i> Cascading Amboli Main Waterfall
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Amboli Hill Station & Waterfalls', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Block: Royal Maratha Forts & UNESCO Heritage -->
+      <div class="carousel-category-block reveal-on-scroll">
+        <div class="carousel-row-header">
+          <div class="carousel-row-title-wrap">
+            <h3 class="carousel-row-title">
+              <i class="fa-solid fa-shield-halved"></i> Royal Maratha Forts & UNESCO Heritage <span class="carousel-count-pill">10 Destinations</span>
+            </h3>
+            <span class="carousel-row-subtitle">Citadels of Swarajya, rock-cut architecture & world heritage caves</span>
+          </div>
+          <div class="carousel-nav-arrows">
+            <button class="carousel-arrow prev" onclick="scrollCarousel('trackForts', -1)" aria-label="Previous Destinations">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="carousel-arrow next" onclick="scrollCarousel('trackForts', 1)" aria-label="Next Destinations">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="carousel-track" id="trackForts">
+          <div class="carousel-card" data-name="raigad fort capital of swarajya chhatrapati shivaji maharaj samadhi ropeway mahad">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/raigad-fort.jpg" alt="Raigad Fort, Capital of the Maratha Empire" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Maratha Fort • Raigad</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Raigad Fort (Capital of Swarajya)">Raigad Fort (Capital of Swarajya)</h4>
+              <p class="carousel-card-desc">The historic hill citadel chosen by Chhatrapati Shivaji Maharaj as the capital
+              of Swarajya in 1674. Home to the Royal Throne (Raj Sabha), Shivaji Maharaj Samadhi, and modern ropeway.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Chhatrapati Shivaji Maharaj Samadhi">
+                  <i class="fa-solid fa-location-dot"></i> Chhatrapati Shivaji Maharaj Samadhi
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Raigad Fort (Capital of Swarajya)', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="rajgad fort royal sovereign capital of shivaji maharaj 26 years suvela padmavati sanjivani pune">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/rajgad-fort.jpg" alt="Rajgad Fort Suvela Machi and Citadel" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Maratha Fort • Pune</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Rajgad Fort (Ruling Capital of Swarajya for 26 Years)">Rajgad Fort (Ruling Capital of Swarajya for 26 Years)</h4>
+              <p class="carousel-card-desc">The formidable mountain capital where Chhatrapati Shivaji Maharaj resided for
+              over 26 years, planning the expansion of Swarajya. Famous for its Balekilla, Padmavati Machi, and
+              needle-hole rock Nedhe.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Ruling Capital of Shivaji Maharaj for 26+ Years">
+                  <i class="fa-solid fa-location-dot"></i> Ruling Capital of Shivaji Maharaj for 26+ Years
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Rajgad Fort (Ruling Capital of Swarajya for 26 Years)', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="torna fort prachandagad first fort captured by shivaji maharaj velhe pune">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/torna-fort.jpg" alt="Torna Fort Prachandagad, Pune" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Maratha Fort • Pune</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Torna Fort (Prachandagad - First Fort of Swarajya)">Torna Fort (Prachandagad - First Fort of Swarajya)</h4>
+              <p class="carousel-card-desc">The first fort captured by 16-year-old Shivaji Maharaj in 1646, marking the
+              founding of Hindavi Swarajya. Nicknamed Prachandagad ("Massive Fort") for its colossal walls and ridge
+              cliffs.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="First Fort Captured by Chhatrapati Shivaji Maharaj (1646)">
+                  <i class="fa-solid fa-location-dot"></i> First Fort Captured by Chhatrapati Shivaji Maharaj (1646)
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Torna Fort (Prachandagad - First Fort of Swarajya)', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="lohagad fort iron fort vinchukata scorpion tail lonavala malavali pune">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/lohagad-fort.jpg" alt="Lohagad Iron Fort Vinchukata Ridge" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Maratha Fort • Lonavala</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Lohagad Fort (The Iron Fort & Vinchukata)">Lohagad Fort (The Iron Fort & Vinchukata)</h4>
+              <p class="carousel-card-desc">The formidable "Iron Fort" perched at 1,033m overlooking Pavana Dam. Prominently
+              used by Shivaji Maharaj to store treasury, famous for the iconic 1,500-meter Vinchukata (scorpion's tail)
+              ridge.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="1,500-Meter Vinchukata (Scorpion's Tail) Ridge">
+                  <i class="fa-solid fa-location-dot"></i> 1,500-Meter Vinchukata (Scorpion's Tail) Ridge
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Lohagad Fort (The Iron Fort & Vinchukata)', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="shivneri fort birthplace of chhatrapati shivaji maharaj jijabai badami junnar">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/shivneri-fort.jpg" alt="Shivneri Fort, Junnar Pune" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Heritage Fort • Junnar</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Shivneri Fort (Birthplace of Chhatrapati Shivaji)">Shivneri Fort (Birthplace of Chhatrapati Shivaji)</h4>
+              <p class="carousel-card-desc">The sacred hill fortress where Chhatrapati Shivaji Maharaj was born on 19th
+              February 1630. Features the prayer sanctum of Goddess Shivai, Rajgadhi, and Badami lake.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Shivaji Maharaj Birth Memorial (Janmasthal)">
+                  <i class="fa-solid fa-location-dot"></i> Shivaji Maharaj Birth Memorial (Janmasthal)
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Shivneri Fort (Birthplace of Chhatrapati Shivaji)', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="sinhagad fort tanaji malusare memorial khadakwasla dam pune">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/sinhagad-fort.jpg" alt="Sinhagad Fort Lion Fort, Pune" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Maratha Fort • Pune</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Sinhagad Fort & Khadakwasla, Pune">Sinhagad Fort & Khadakwasla, Pune</h4>
+              <p class="carousel-card-desc">The legendary "Lion Fort" immortalized by Tanaji Malusare's heroic Battle of
+              1670 ("Gad aala pan sinh gela"). Famous for authentic Pithla Bhakri, Kanda Bhajji, and Khadakwasla
+              backwaters.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Tanaji Malusare Samadhi Memorial">
+                  <i class="fa-solid fa-location-dot"></i> Tanaji Malusare Samadhi Memorial
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Sinhagad Fort & Khadakwasla, Pune', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="pratapgad fort afzal khan battle bhavani mata temple mahabaleshwar satara">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/pratapgad-fort.jpg" alt="Pratapgad Fort, Mahabaleshwar" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Maratha Fort • Satara</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Pratapgad Fort & Mahabaleshwar Foothills">Pratapgad Fort & Mahabaleshwar Foothills</h4>
+              <p class="carousel-card-desc">Built in 1656 by Moropant Pingle under Shivaji Maharaj's guidance, this fort
+              witnessed the historic defeat of Afzal Khan. Features the sacred Bhavani temple and equestrian Shivaji
+              statue.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Historic Afzal Khan Battleground Site">
+                  <i class="fa-solid fa-location-dot"></i> Historic Afzal Khan Battleground Site
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Pratapgad Fort & Mahabaleshwar Foothills', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="vasota fort vyaghragad koyna wildlife sanctuary shivsagar lake boat safari satara">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/vasota-koyna.jpg" alt="Vasota Fort and Shivsagar Lake Boating, Koyna" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Jungle Fort • Satara</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Vasota Jungle Fort & Koyna Wildlife Sanctuary">Vasota Jungle Fort & Koyna Wildlife Sanctuary</h4>
+              <p class="carousel-card-desc">An incredible wilderness fort nestled deep inside the Koyna Wildlife Sanctuary,
+              accessible only by a scenic boat safari across Shivsagar Lake followed by an enchanting rainforest trek.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Speedboat Ride Across Shivsagar Lake">
+                  <i class="fa-solid fa-location-dot"></i> Speedboat Ride Across Shivsagar Lake
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Vasota Jungle Fort & Koyna Wildlife Sanctuary', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="ajanta ellora caves kailasa temple unesco world heritage sambhajinagar rock cut buddhist">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/ellora-caves.jpg" alt="Kailasa Temple at Ellora Caves" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">UNESCO World Heritage</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Ajanta & Ellora UNESCO World Heritage Caves">Ajanta & Ellora UNESCO World Heritage Caves</h4>
+              <p class="carousel-card-desc">World-famous UNESCO World Heritage marvels: 34 Ellora caves housing the
+              astonishing Kailasa monolithic temple carved from a single mountain, and 30 Ajanta caves with ancient
+              Buddhist frescoes.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Kailasa Monolithic Rock-Cut Marvel (Cave 16)">
+                  <i class="fa-solid fa-location-dot"></i> Kailasa Monolithic Rock-Cut Marvel (Cave 16)
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Ajanta & Ellora UNESCO World Heritage Caves', '32-Seater BharatBenz Coach')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="elephanta caves unesco world heritage island trimurti mumbai harbour ferry gateway">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/elephanta-caves.jpg" alt="Elephanta Caves Trimurti Shiva, Mumbai Harbour" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">UNESCO Island • Mumbai</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Elephanta Caves UNESCO World Heritage">Elephanta Caves UNESCO World Heritage</h4>
+              <p class="carousel-card-desc">A UNESCO World Heritage island in Mumbai Harbour reached by scenic ferry from
+              the Gateway of India. Houses monumental 5th-century rock-cut cave temples dedicated to Lord Shiva.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Iconic 20-Foot Sadashiva Trimurti Sculpture">
+                  <i class="fa-solid fa-location-dot"></i> Iconic 20-Foot Sadashiva Trimurti Sculpture
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Elephanta Caves UNESCO World Heritage', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Block: Konkan Coastline, Beaches & Wildlife -->
+      <div class="carousel-category-block reveal-on-scroll">
+        <div class="carousel-row-header">
+          <div class="carousel-row-title-wrap">
+            <h3 class="carousel-row-title">
+              <i class="fa-solid fa-water"></i> Konkan Coastline, Beaches & Wildlife <span class="carousel-count-pill">11 Destinations</span>
+            </h3>
+            <span class="carousel-row-subtitle">Pristine shores, sea forts, water sports & tiger safari reserves</span>
+          </div>
+          <div class="carousel-nav-arrows">
+            <button class="carousel-arrow prev" onclick="scrollCarousel('trackBeaches', -1)" aria-label="Previous Destinations">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="carousel-arrow next" onclick="scrollCarousel('trackBeaches', 1)" aria-label="Next Destinations">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="carousel-track" id="trackBeaches">
+          <div class="carousel-card" data-name="alibaug nagaon beach kolaba fort water sports kihim raigad">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/alibaug-beach.jpg" alt="Alibaug Beach and Kolaba Sea Fort" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Konkan Beach • Raigad</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Alibaug, Nagaon Beach & Kolaba Fort">Alibaug, Nagaon Beach & Kolaba Fort</h4>
+              <p class="carousel-card-desc">The most popular coastal getaway from Pune and Mumbai, featuring palm-fringed
+              sands, thrilling water sports, seafood shacks, and Shivaji Maharaj's sea fort Kolaba built inside the
+              waves.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Kolaba Sea Fort Accessible at Low Tide">
+                  <i class="fa-solid fa-location-dot"></i> Kolaba Sea Fort Accessible at Low Tide
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Alibaug, Nagaon Beach & Kolaba Fort', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="murud janjira sea fort invulnerable island kashid raigad rajapuri">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/murud-janjira.jpg" alt="Murud-Janjira Island Sea Fort" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Konkan Sea Fort • Raigad</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Murud-Janjira Sea Fort & Beach">Murud-Janjira Sea Fort & Beach</h4>
+              <p class="carousel-card-desc">One of the world's strongest and most impregnable island sea forts, built in the
+              Arabian Sea with 19 round bastions that remained unconquered throughout centuries.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Unconquered Island Citadel in Arabian Sea">
+                  <i class="fa-solid fa-location-dot"></i> Unconquered Island Citadel in Arabian Sea
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Murud-Janjira Sea Fort & Beach', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="kashid beach white sand beach water sports parasailing casuarina groves raigad">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/kashid-beach.jpg" alt="Kashid White Sand Beach, Maharashtra" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Konkan Beach • Raigad</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Kashid Beach (White Sand Beach & Water Sports)">Kashid Beach (White Sand Beach & Water Sports)</h4>
+              <p class="carousel-card-desc">Renowned as one of the cleanest and most picturesque beaches in North Konkan,
+              stretching 3 km along the Arabian Sea with silvery white sand, clear blue water, and thrilling adventure
+              sports.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Silvery White Sand & Casuarina Forest">
+                  <i class="fa-solid fa-location-dot"></i> Silvery White Sand & Casuarina Forest
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Kashid Beach (White Sand Beach & Water Sports)', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="harihareshwar shrivardhan dakshin kashi kalbhairav temple sea cliffs pradakshina raigad">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/harihareshwar.jpg" alt="Harihareshwar Temple and Coastal Cliffs" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Coastal Pilgrim • Raigad</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Harihareshwar & Shrivardhan (Dakshin Kashi)">Harihareshwar & Shrivardhan (Dakshin Kashi)</h4>
+              <p class="carousel-card-desc">Reverently known as "Dakshin Kashi" (Kashi of the South), this sacred coastal
+              paradise is where Savitri River enters the Arabian Sea, famous for Kalbhairav Mandir and dramatic
+              sea-cliff pradakshina.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Ancient Kalbhairav & Harihareshwar Mandir">
+                  <i class="fa-solid fa-location-dot"></i> Ancient Kalbhairav & Harihareshwar Mandir
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Harihareshwar & Shrivardhan (Dakshin Kashi)', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="ganpatipule beach swayambhu ganpati mandir malgund prachin konkan ratnagiri">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/ganpatipule-beach.jpg" alt="Ganpatipule Beach and Ganpati Mandir" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Konkan Beach • Ratnagiri</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Ganpatipule Beach & Swayambhu Ganpati">Ganpatipule Beach & Swayambhu Ganpati</h4>
+              <p class="carousel-card-desc">A divine coastal paradise where a 400-year-old self-originated Ganesha idol
+              rests directly on the pristine white shores facing the Arabian Sea. The entire hill is circumambulated as
+              pradikshana.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="400-Year-Old Swayambhu Beach Ganesha">
+                  <i class="fa-solid fa-location-dot"></i> 400-Year-Old Swayambhu Beach Ganesha
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Ganpatipule Beach & Swayambhu Ganpati', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="dapoli murud harnai suvarnadurg sea fort dolphin safari unhavare hot springs ratnagiri">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/dapoli-beach.jpg" alt="Dapoli Coast and Murud Harnai, Ratnagiri" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Konkan Beach • Ratnagiri</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Dapoli & Murud-Harnai (Dolphin Safari & Sea Forts)">Dapoli & Murud-Harnai (Dolphin Safari & Sea Forts)</h4>
+              <p class="carousel-card-desc">Known as the "Mini Mahabaleshwar of Konkan" for its year-round cool breeze,
+              Dapoli features unpolluted beaches, live Arabian Sea dolphin watching, fish auctions at Harnai, and
+              historic Suvarnadurg.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Early Morning Dolphin Spotting Boat Ride">
+                  <i class="fa-solid fa-location-dot"></i> Early Morning Dolphin Spotting Boat Ride
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Dapoli & Murud-Harnai (Dolphin Safari & Sea Forts)', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="tarkarli scuba diving snorkeling sindhudurg fort malvan corals watersports">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/tarkarli-beach.jpg" alt="Tarkarli Scuba Diving & Sindhudurg Fort" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Konkan Beach • Malvan</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Tarkarli Scuba & Sindhudurg Sea Fort">Tarkarli Scuba & Sindhudurg Sea Fort</h4>
+              <p class="carousel-card-desc">Maharashtra's premier scuba diving and coral hub in Malvan, offering crystal
+              clear waters, dolphin safaris, Karli backwaters, and Chhatrapati Shivaji Maharaj's majestic 1664
+              Sindhudurg Fort.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="PADI Certified Scuba Diving & Corals">
+                  <i class="fa-solid fa-location-dot"></i> PADI Certified Scuba Diving & Corals
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Tarkarli Scuba & Sindhudurg Sea Fort', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="mumbai gateway of india marine drive bandra worli sea link siddhi vinayak filmcity">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/mumbai-gateway.jpg" alt="Gateway of India, Mumbai Coastal View" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">City Tour • Mumbai</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Gateway of India & Mumbai Darshan">Gateway of India & Mumbai Darshan</h4>
+              <p class="carousel-card-desc">The iconic commercial capital of India: cruise past Marine Drive's Queen's
+              Necklace, Gateway of India, Bandra-Worli Sea Link, Siddhivinayak Temple, and Bollywood Film City in AC
+              comfort.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Gateway of India & Taj Mahal Palace">
+                  <i class="fa-solid fa-location-dot"></i> Gateway of India & Taj Mahal Palace
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Gateway of India & Mumbai Darshan', '32-Seater BharatBenz Coach')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="pune shreemant dagdusheth ganpati shaniwar wada aga khan palace osho ashram">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/pune-dagdusheth.jpg" alt="Shreemant Dagdusheth Halwai Ganpati Temple, Pune" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">City Tour • Pune</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Shreemant Dagdusheth & Pune Heritage">Shreemant Dagdusheth & Pune Heritage</h4>
+              <p class="carousel-card-desc">Explore the cultural capital of Maharashtra: seek blessings at the world-famous
+              golden Shreemant Dagdusheth Ganpati, walk through Peshwa historic fortress Shaniwar Wada, and Aga Khan
+              Palace.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Shreemant Dagdusheth Golden Ganpati">
+                  <i class="fa-solid fa-location-dot"></i> Shreemant Dagdusheth Golden Ganpati
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Shreemant Dagdusheth & Pune Heritage', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="lonar meteorite crater lake basaltic impact hyper saline ram gaya buldhana">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/lonar-lake.jpg" alt="Lonar Meteorite Crater Lake, Buldhana" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Geo Wonder • Buldhana</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Lonar Meteorite Crater Lake">Lonar Meteorite Crater Lake</h4>
+              <p class="carousel-card-desc">One of the world's rarest natural wonders: a 52,000-year-old hyper-saline
+              meteorite impact crater lake formed in basalt rock, ringed by ancient 12th-century Hemadpanthi temples and
+              lush forest.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="World's Only Hyper-Saline Basalt Meteorite Crater">
+                  <i class="fa-solid fa-location-dot"></i> World's Only Hyper-Saline Basalt Meteorite Crater
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Lonar Meteorite Crater Lake', '17-Seater Force Urbania Bus')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-name="tadoba andhari tiger reserve wildlife safari chandrapur moharli gypsy bengal tiger">
+            <div class="carousel-card-img-wrap">
+              <img src="assets/images/destinations/tadoba-safari.jpg" alt="Tadoba Andhari Tiger Reserve, Maharashtra" class="carousel-card-img" loading="lazy">
+              <span class="carousel-card-badge">Wildlife Safari • Chandrapur</span>
+            </div>
+            <div class="carousel-card-body">
+              <h4 class="carousel-card-title" title="Tadoba-Andhari Tiger Reserve Wildlife Safari">Tadoba-Andhari Tiger Reserve Wildlife Safari</h4>
+              <p class="carousel-card-desc">Maharashtra's oldest and premier national park in Chandrapur, internationally
+              renowned for highest tiger sighting density, thrilling open-top gypsy safaris, leopards, and Erai Lake.</p>
+              <div class="carousel-card-meta">
+                <span class="carousel-card-highlight" title="Highest Royal Bengal Tiger Sighting Density">
+                  <i class="fa-solid fa-location-dot"></i> Highest Royal Bengal Tiger Sighting Density
+                </span>
+                <button class="btn-carousel-book" onclick="openPlaceBookingModal('Tadoba-Andhari Tiger Reserve Wildlife Safari', '17-Seater Tempo Traveller (16+1)')">
+                  <i class="fa-brands fa-whatsapp"></i> Book
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1887,18 +1625,12 @@
         <div>
           <h4 class="footer-col-title">Popular Maharashtra Tours</h4>
           <ul class="footer-links-list">
-            <li class="footer-link-item"><a href="#destinationsSection" onclick="filterState('jyotirlinga')"><i
-                  class="fa-solid fa-angle-right"></i> 5 Jyotirlinga Darshan Tour</a></li>
-            <li class="footer-link-item"><a href="#destinationsSection" onclick="filterState('pilgrimage')"><i
-                  class="fa-solid fa-angle-right"></i> Ashtavinayak & Shirdi Yatra</a></li>
-            <li class="footer-link-item"><a href="#destinationsSection" onclick="filterState('hillstation')"><i
-                  class="fa-solid fa-angle-right"></i> Mahabaleshwar & Lonavala</a></li>
-            <li class="footer-link-item"><a href="#destinationsSection" onclick="filterState('forts')"><i
-                  class="fa-solid fa-angle-right"></i> Shivaji Maharaj Forts Tour</a></li>
-            <li class="footer-link-item"><a href="#destinationsSection" onclick="filterState('beaches')"><i
-                  class="fa-solid fa-angle-right"></i> Konkan Beaches & Forts</a></li>
-            <li class="footer-link-item"><a href="#destinationsSection" onclick="filterState('city')"><i
-                  class="fa-solid fa-angle-right"></i> Mumbai & Pune City Tours</a></li>
+            <li class="footer-link-item"><a href="#trackJyotirlinga"><i class="fa-solid fa-angle-right"></i> 5 Jyotirlinga Darshan Tour</a></li>
+            <li class="footer-link-item"><a href="#trackJyotirlinga"><i class="fa-solid fa-angle-right"></i> Ashtavinayak & Shirdi Yatra</a></li>
+            <li class="footer-link-item"><a href="#trackHillStations"><i class="fa-solid fa-angle-right"></i> Mahabaleshwar & Lonavala</a></li>
+            <li class="footer-link-item"><a href="#trackForts"><i class="fa-solid fa-angle-right"></i> Shivaji Maharaj Forts Tour</a></li>
+            <li class="footer-link-item"><a href="#trackBeaches"><i class="fa-solid fa-angle-right"></i> Konkan Beaches & Forts</a></li>
+            <li class="footer-link-item"><a href="#trackBeaches"><i class="fa-solid fa-angle-right"></i> Mumbai & Pune City Tours</a></li>
           </ul>
         </div>
 
@@ -1969,7 +1701,7 @@
 
         <!-- Leaving From City -->
         <div class="form-group-custom">
-          <label class="field-label">Leaving From (City)</label>
+          <label class="field-label">Pick up location</label>
           <input type="text" id="modalFromCity" class="input-custom" placeholder="e.g. Pune / Mumbai / Nashik"
             value="Pune" required>
         </div>
@@ -2021,8 +1753,8 @@
       aria-label="Back to Top">
       <i class="fa-solid fa-arrow-up"></i>
     </button>
-    <a href="https://wa.me/918446802069?text=Hi%20Anvisha%20Travels,%20I%20want%20to%20plan%20a%20trip."
-      target="_blank" class="floating-btn btn-whatsapp-float" title="Instant WhatsApp Chat" aria-label="WhatsApp Us">
+    <a href="https://wa.me/918446802069?text=Hi%20Anvisha%20Travels,%20I%20want%20to%20plan%20a%20trip." target="_blank"
+      class="floating-btn btn-whatsapp-float" title="Instant WhatsApp Chat" aria-label="WhatsApp Us">
       <i class="fa-brands fa-whatsapp"></i>
       <span class="floating-fab-badge">Chat with Us</span>
     </a>
@@ -2033,7 +1765,7 @@
   </div>
 
   <!-- Custom Logic Script -->
-  <script src="js/app.js?v=17.0"></script>
+  <script src="js/app.js?v=18.0"></script>
 </body>
 
 </html>
