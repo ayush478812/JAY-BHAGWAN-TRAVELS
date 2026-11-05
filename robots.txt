@@ -1,0 +1,25 @@
+# Robots.txt for Anvisha Travels
+# https://www.anvishatravels.com
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Googlebot specific optimizations
+User-agent: Googlebot
+Allow: /
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Googlebot-Image specific
+User-agent: Googlebot-Image
+Allow: /assets/images/
+
+# Sitemap Location for Google Search Console & Bing Webmaster
+Sitemap: https://www.anvishatravels.com/sitemap.xml
